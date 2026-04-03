@@ -1,0 +1,27 @@
+# Keywords for discovering agent repos and docs (one phrase per line)
+# Lines starting with # are ignored when parsing programmatically.
+
+langgraph agent orchestration
+openai agents sdk multi-agent
+anthropic tool use computer use
+mcp model context protocol server
+agent harness eval trace replay
+autonomous loop stop condition
+multi-agent orchestration a2a protocol
+react agent function calling json schema
+agent memory rag tool selection policy
+observability llm tracing opentelemetry
+agent safety guardrails content policy
+subagent delegation handoff pattern
+production agent case study postmortem
+agent testing golden trace regression
+workflow vs autonomous agent comparison
+cost cap rate limit token budget
+sandboxed code execution agent
+human in the loop approval gate
+self-improving agent reflection harness
+langchain agent executor deprecated patterns
+crewai autonomous task agent
+semantic kernel planner agent
+temporal durable agent workflow
+evals llm-as-judge agent benchmark
