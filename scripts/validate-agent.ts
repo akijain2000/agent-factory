@@ -89,6 +89,15 @@ out("Tool definitions", toolN >= 1 ? "Pass" : "Fail", toolN >= 1 ? `${toolN} in 
 const testN = countAllFiles(path.join(root, "tests"));
 out("Tests directory", testN > 0 ? "Pass" : "Fail", testN > 0 ? `${testN} file(s)` : "missing or empty");
 
+const srcPath = path.join(root, "src");
+const srcExists = exists(srcPath) && fs.statSync(srcPath).isDirectory();
+const srcN = srcExists ? fs.readdirSync(srcPath).filter((x) => !x.startsWith(".")).length : 0;
+out("Source directory", srcN > 0 ? "Pass" : "Warn", srcN > 0 ? `${srcN} file(s) in src/` : "missing or empty src/ (AGENT_SPEC canonical structure)");
+
+const deployPath = path.join(root, "deploy");
+const deployExists = exists(deployPath) && fs.statSync(deployPath).isDirectory();
+out("Deploy directory", deployExists ? "Pass" : "Warn", deployExists ? "present" : "missing deploy/ (AGENT_SPEC canonical structure)");
+
 if (exists(path.join(root, ".env"))) out("Secrets / .env", "Fail", ".env committed; use .env.example");
 else {
   const files: string[] = [];
