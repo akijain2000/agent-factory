@@ -41,9 +41,9 @@ If users should see plans (approval UX), render structured steps; if planning is
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 10 — Reasoning Patterns: CoT, ToT, Reflexion** — tradeoffs and controls.
-- **Module 14 — Plan–Execute & Replanning** — integrating plans with the harness.
-- **Module 19 — Agent Evaluation & Offline Metrics** — plan adherence and replan quality.
+- **Module 07 — Planning and Reasoning** — CoT, trees, reflection, and tradeoffs.
+- **Module 03 — The Agent Loop** — integrating plans and replanning with the harness.
+- **Module 17 — Agent Evaluation and Testing** — plan adherence, replan quality, and offline metrics.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

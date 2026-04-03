@@ -46,9 +46,9 @@ Map controls to frameworks your customers ask for (SOC2, ISO) so sales and secur
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 07 — Security, Trust Boundaries, and Sandboxing** — threat modeling and isolation.
-- **Module 08 — Tool Design & Safe Execution** — contracts that resist misuse.
-- **Module 21 — Observability & Tracing** — audit-grade telemetry without leaking secrets.
+- **Module 18 — Safety and Guardrails** — threat modeling, trust boundaries, and isolation.
+- **Module 05 — Tool Design and Integration** — contracts that resist misuse and limit blast radius.
+- **Module 19 — Observability and Debugging** — audit-grade telemetry without leaking secrets.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

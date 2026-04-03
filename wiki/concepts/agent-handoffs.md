@@ -46,10 +46,9 @@ If a handoff retries after a timeout, include a **handoff_id** so downstream wor
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 12 — State Machines & Graph-Based Agents** — explicit transfer edges and forbidden transitions.
-- **Module 13 — Persistence, Checkpoints, and Recovery** — resuming after partial handoffs or crashes.
-- **Module 20 — Human-in-the-Loop UX & Policy** — approval during transfers and sensitive routing.
-- **Module 21 — Observability & Tracing** — stitching narratives across agents.
+- **Module 10 — Multi-Agent Patterns** — roles, routing, and explicit transfer semantics.
+- **Module 12 — State Management** — handoff payloads, forbidden transitions, and recovery.
+- **Module 19 — Observability and Debugging** — shared trace IDs and cross-agent narratives.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

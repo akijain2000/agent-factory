@@ -45,9 +45,9 @@ Align learning cadence with **deploy** trains—skills promoted mid-release can 
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 12 — Learning from Feedback & Skills** — distilling experience into reusable assets.
-- **Module 13 — Memory Systems Deep Dive** — tiers, retention, and safety.
-- **Module 17 — Governance, Review, and Change Control** — who may promote learned content.
+- **Module 22 — Self-Improvement and Harness Engineering** — distilling feedback into better harnesses and skills.
+- **Module 06 — Memory and Context Engineering** — what to retain and how it feeds the next run.
+- **Module 17 — Agent Evaluation and Testing** — measuring whether self-updates actually help.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

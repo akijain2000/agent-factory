@@ -50,9 +50,9 @@ Convert approvals and edits into **labeled spans** for training and eval updates
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 13 — Reflection, Critics, and Self-Correction** — loop design patterns.
-- **Module 14 — Behavioral Test Suites & Golden Traces** — measuring loop quality.
-- **Module 23 — Human Feedback & Active Learning** — closing the outer loop.
+- **Module 07 — Planning and Reasoning** — reflection, critics, and self-correction loops.
+- **Module 17 — Agent Evaluation and Testing** — measuring whether loops improve outcomes.
+- **Module 22 — Self-Improvement and Harness Engineering** — closing the outer loop into the harness.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

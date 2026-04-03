@@ -50,9 +50,9 @@ Generate random but valid tool inputs (Hypothesis, fast-check) to find edge case
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 14 — Behavioral Test Suites & Golden Traces** — scenario design.
-- **Module 16 — Validation, Repair Loops, and Type Safety** — contracts at boundaries.
-- **Module 19 — Trace-Based Testing & CI for Agents** — spans as test artifacts.
+- **Module 17 — Agent Evaluation and Testing** — scenarios, golden traces, and CI for agents.
+- **Module 05 — Tool Design and Integration** — contracts and boundaries under test.
+- **Module 19 — Observability and Debugging** — using spans and traces as test artifacts.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

@@ -46,9 +46,9 @@ For **regulated** workloads, record **data processing** agreements and **retenti
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 04 — Model Selection & Routing** — policies, fallbacks, and tiering.
-- **Module 09 — Agent Evaluation & Benchmarks** — measuring quality per model and task.
-- **Module 18 — Cost and Token Attribution** — tying model choice to spend and margins.
+- **Module 13 — Framework Selection** — policies, routing, and provider or model tiering.
+- **Module 17 — Agent Evaluation and Testing** — measuring quality per model and task.
+- **Module 20 — Deployment and Scaling** — tying model choice to cost, quotas, and capacity.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

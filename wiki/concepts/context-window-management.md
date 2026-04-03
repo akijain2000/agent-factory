@@ -42,9 +42,9 @@ When budgets tighten, shorten **example payloads** in tool descriptions before d
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 22 — Context Engineering & Compaction** — practical budget patterns.
-- **Module 07 — Memory Tiers & Retention** — what should leave the window entirely.
-- **Module 02 — Tokens, Models, and Cost** — measurement fundamentals.
+- **Module 06 — Memory and Context Engineering** — budgets, compaction, and what leaves the window.
+- **Module 04 — System Prompts for Agents** — fitting instructions and examples within limits.
+- **Module 20 — Deployment and Scaling** — token economics, quotas, and cost-aware truncation.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

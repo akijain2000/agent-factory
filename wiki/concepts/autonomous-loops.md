@@ -43,10 +43,9 @@ When scores **plateau**, require a **human** or **different verifier** before al
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 03 — The Agent Loop & Control Flow** — iteration, stops, and budgets at micro scale.
-- **Module 11 — Autonomy, Goals, and Stop Conditions** — macro loops and safe objectives.
-- **Module 15 — Advanced Orchestration & State Machines** — durable runs and checkpoints.
-- **Module 16 — Testing & CI for Agents** — verifiers that autonomous loops must satisfy.
+- **Module 03 — The Agent Loop** — iteration, stops, and budgets at micro scale.
+- **Module 07 — Planning and Reasoning** — goals, macro loops, and when to replan.
+- **Module 18 — Safety and Guardrails** — stop conditions, oversight, and safe autonomy.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

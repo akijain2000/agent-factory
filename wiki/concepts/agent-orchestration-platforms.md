@@ -45,9 +45,9 @@ Define **SLOs** per queue (time-to-first-action, time-to-resolution) the same wa
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 14 — Multi-Agent Systems & Coordination** — roles, protocols, and handoffs.
-- **Module 18 — Cost and Token Attribution** — chargeback and budgets at scale.
-- **Module 23 — Operations, Dashboards, and Fleet Management** — running many agents in production.
+- **Module 10 — Multi-Agent Patterns** — roles, coordination, and handoffs across agents.
+- **Module 13 — Framework Selection** — choosing orchestration platforms and runtimes.
+- **Module 20 — Deployment and Scaling** — operating agent fleets under load.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

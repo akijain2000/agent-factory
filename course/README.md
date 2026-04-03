@@ -42,26 +42,26 @@ Protocols and interoperability (MCP, A2A), self-improvement and harness engineer
 
 | Module | Title | Duration |
 |--------|--------|----------|
-| [01](01-what-are-agents.md) | What Are Agents | short |
-| [02](02-agent-architectures.md) | Agent Architectures | short |
-| [03](03-the-agent-loop.md) | The Agent Loop | short |
-| [04](04-system-prompts-for-agents.md) | System Prompts for Agents | short |
-| [05](05-tool-design-and-integration.md) | Tool Design and Integration | medium |
-| [06](06-memory-and-context-engineering.md) | Memory and Context Engineering | medium |
-| [07](07-planning-and-reasoning.md) | Planning and Reasoning | medium |
-| [08](08-error-handling-and-recovery.md) | Error Handling and Recovery | medium |
-| [09](09-agent-design-patterns.md) | Agent Design Patterns | medium |
-| [10](10-multi-agent-patterns.md) | Multi-Agent Patterns | medium |
-| [11](11-anti-patterns.md) | Anti-Patterns | medium |
-| [12](12-state-management.md) | State Management | medium |
-| [13](13-framework-selection.md) | Framework Selection | medium |
-| [14](14-building-with-langgraph.md) | Building with LangGraph | medium |
-| [15](15-building-with-openai-agents-sdk.md) | Building with OpenAI Agents SDK | medium |
-| [16](16-building-with-anthropic.md) | Building with Anthropic | medium |
-| [17](17-agent-evaluation-and-testing.md) | Agent Evaluation and Testing | medium |
-| [18](18-safety-and-guardrails.md) | Safety and Guardrails | medium |
-| [19](19-observability-and-debugging.md) | Observability and Debugging | medium |
-| [20](20-deployment-and-scaling.md) | Deployment and Scaling | medium |
+| [01](01-what-are-agents.md) | What Are Agents | 30 min |
+| [02](02-agent-architectures.md) | Agent Architectures | 40 min |
+| [03](03-the-agent-loop.md) | The Agent Loop | 40 min |
+| [04](04-system-prompts-for-agents.md) | System Prompts for Agents | 30 min |
+| [05](05-tool-design-and-integration.md) | Tool Design and Integration | 45 min |
+| [06](06-memory-and-context-engineering.md) | Memory and Context Engineering | 45 min |
+| [07](07-planning-and-reasoning.md) | Planning and Reasoning | 40 min |
+| [08](08-error-handling-and-recovery.md) | Error Handling and Recovery | 30 min |
+| [09](09-agent-design-patterns.md) | Agent Design Patterns | 45 min |
+| [10](10-multi-agent-patterns.md) | Multi-Agent Patterns | 45 min |
+| [11](11-anti-patterns.md) | Anti-Patterns | 35 min |
+| [12](12-state-management.md) | State Management | 35 min |
+| [13](13-framework-selection.md) | Framework Selection | 30 min |
+| [14](14-building-with-langgraph.md) | Building with LangGraph | 45 min |
+| [15](15-building-with-openai-agents-sdk.md) | Building with OpenAI Agents SDK | 45 min |
+| [16](16-building-with-anthropic.md) | Building with Anthropic | 45 min |
+| [17](17-agent-evaluation-and-testing.md) | Agent Evaluation and Testing | 40 min |
+| [18](18-safety-and-guardrails.md) | Safety and Guardrails | 40 min |
+| [19](19-observability-and-debugging.md) | Observability and Debugging | 35 min |
+| [20](20-deployment-and-scaling.md) | Deployment and Scaling | 35 min |
 | [21](21-protocols-and-interoperability.md) | Protocols and Interoperability | 40 min |
 | [22](22-self-improvement-and-harness-engineering.md) | Self-Improvement and Harness Engineering | 45 min |
 | [23](23-capstone-build-a-production-agent.md) | Capstone: Build a Production Agent | 60 min |
@@ -78,7 +78,7 @@ Treat **[AGENT_SPEC.md](../AGENT_SPEC.md)** as the repository’s cross-cutting 
 
 ## Companion project: Skill Factory
 
-Agents and **skills** (procedures loaded by hosts) share engineering concerns: scoping, discovery, verification, and safety. The companion **Skill Factory** project lives at [`../../../skill-factory/`](../../../skill-factory/README.md) relative to this folder (sibling of `agent-factory` under the same parent workspace). Use it when you want parallel depth on authoring reusable **SKILL.md** assets and validation loops.
+Agents and **skills** (procedures loaded by hosts) share engineering concerns: scoping, discovery, verification, and safety. The companion **Skill Factory** project lives at [`../../skill-factory/`](../../skill-factory/README.md) relative to this folder (sibling of `agent-factory` under the same parent workspace). Use it when you want parallel depth on authoring reusable **SKILL.md** assets and validation loops.
 
 ---
 

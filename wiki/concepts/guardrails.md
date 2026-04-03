@@ -45,9 +45,9 @@ Run **automated adversarial suites** on each prompt/tool change: injection strin
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 17 — Safety Architecture & Threat Modeling** — STRIDE-style basics for agents.
-- **Module 18 — Prompt Injection & Untrusted Content** — separation and mitigations.
-- **Module 11 — Tool Catalogs & Least Privilege** — narrowing blast radius.
+- **Module 18 — Safety and Guardrails** — threat modeling, policies, and enforcement layers.
+- **Module 05 — Tool Design and Integration** — least-privilege tools and narrow blast radius.
+- **Module 11 — Anti-Patterns** — common safety mistakes and how to avoid them.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

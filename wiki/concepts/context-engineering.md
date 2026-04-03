@@ -46,9 +46,9 @@ Diff **manifests** across turns in debug tooling so engineers can see exactly wh
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 06 — Context, Windows, and Memory Architecture** — curating what the model sees.
-- **Module 11 — Retrieval, RAG, and Grounding** — ingestion, ranking, and trust.
-- **Module 22 — Caching, Batching, and Context Pruning** — compaction and efficiency.
+- **Module 06 — Memory and Context Engineering** — curating what the model sees and when to compact.
+- **Module 04 — System Prompts for Agents** — aligning instructions with the assembled context.
+- **Module 09 — Agent Design Patterns** — reusable shapes for context assembly and retrieval.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

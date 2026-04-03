@@ -45,9 +45,9 @@ When semantic memory changes (pricing, policy), version documents and prefer **t
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 07 — Memory Tiers & Retention** — designing lifetime and access paths.
-- **Module 08 — RAG, Vector Stores, and Chunking** — retrieval layer mechanics.
-- **Module 09 — Knowledge Graphs & Structured Facts** — when graphs beat chunks.
+- **Module 06 — Memory and Context Engineering** — tiers, retention, and access paths.
+- **Module 09 — Agent Design Patterns** — RAG, chunking, and structured memory shapes.
+- **Module 18 — Safety and Guardrails** — retrieval trust boundaries and injection risks.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

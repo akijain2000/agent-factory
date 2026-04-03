@@ -47,9 +47,9 @@ Chaos tests: inject latency, 500s, and malformed payloads into tool stubs. Asser
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 15 — Failures, Retries, and Idempotency** — safe repetition and keys.
-- **Module 16 — Circuit Breakers, Bulkheads, and DLQs** — dependency protection.
-- **Module 21 — Observability & Tracing** — correlating failures across retries.
+- **Module 08 — Error Handling and Recovery** — retries, idempotency, circuit breakers, and DLQs.
+- **Module 05 — Tool Design and Integration** — surfacing errors the model can act on safely.
+- **Module 19 — Observability and Debugging** — correlating failures and retries in traces.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

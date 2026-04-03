@@ -44,10 +44,9 @@ Every sub-agent run should inherit the **root trace id** and add a **child span*
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 12 — State Machines & Graph-Based Agents** — modeling multi-actor flows and interrupts.
-- **Module 14 — Plan–Execute & Replanning** — staged execution with explicit replan triggers.
-- **Module 19 — Agent Evaluation & Offline Metrics** — measuring coordination overhead vs quality lift.
-- **Module 21 — Observability & Tracing** — shared trace ids and per-actor spans.
+- **Module 10 — Multi-Agent Patterns** — supervisors, workers, and coordination topologies.
+- **Module 07 — Planning and Reasoning** — staged execution and explicit replan triggers.
+- **Module 19 — Observability and Debugging** — shared trace IDs, spans, and coordination signals.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

@@ -46,9 +46,9 @@ Offer **export** of transcripts where policy allows—enterprise users often nee
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 02 — Product Surfaces & Agent UX** — streaming, states, and trust copy.
-- **Module 10 — Human-in-the-Loop & Approvals** — gating and handoff UX.
-- **Module 21 — Observability & Tracing** — aligning user-visible status with internal spans.
+- **Module 01 — What Are Agents** — mental model for what users should expect on the surface.
+- **Module 04 — System Prompts for Agents** — tone, disclosure, and trust copy aligned with behavior.
+- **Module 19 — Observability and Debugging** — aligning user-visible status with internal traces.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

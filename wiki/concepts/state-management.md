@@ -44,9 +44,9 @@ When a run “looks stuck,” dump: current **state machine phase**, last **chec
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 12 — State Machines & Graph-Based Agents** — LangGraph patterns and interrupts.
-- **Module 13 — Persistence, Checkpoints, and Recovery** — durable run records.
-- **Module 04 — ReAct, Tool Calling, and the Harness** — where message history meets state.
+- **Module 12 — State Management** — explicit state, reducers, and invariants.
+- **Module 14 — Building with LangGraph** — graphs, interrupts, and checkpoint-friendly patterns.
+- **Module 03 — The Agent Loop** — where message history meets durable run state.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

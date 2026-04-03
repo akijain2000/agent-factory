@@ -43,9 +43,9 @@ Your orchestrator should expose: `run_loop(initial_state) -> TerminalState`, wit
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 03 — The Agent Loop & Control Flow** — lifecycle of a run, iteration boundaries, stop conditions.
-- **Module 04 — ReAct, Tool Calling, and the Harness** — wiring plan-act-observe into your runtime.
-- **Module 21 — Observability & Tracing** — correlating spans across loop iterations.
+- **Module 01 — What Are Agents** — what “one turn” versus a multi-step run means for your product.
+- **Module 03 — The Agent Loop** — lifecycle, iteration boundaries, and stop conditions.
+- **Module 09 — Agent Design Patterns** — plan–act–observe and related loop shapes.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

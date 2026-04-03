@@ -50,9 +50,9 @@ Never share writable temp directories across tenants. Reset state between sessio
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 06 — MCP: Servers, Resources, and Security** — trust boundaries for tools.
-- **Module 20 — Sandboxing & Isolation** — containers, gVisor, and policies.
-- **Module 21 — Secrets, IAM, and Blast Radius** — credential hygiene for agents.
+- **Module 18 — Safety and Guardrails** — isolation, policies, and blast-radius limits.
+- **Module 05 — Tool Design and Integration** — trust boundaries where tools meet the runtime.
+- **Module 21 — Protocols and Interoperability** — standard surfaces (e.g. MCP-style) and their security model.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

@@ -45,9 +45,9 @@ Document **limit headers** and provider-specific quirks in runbooks so on-call e
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 05 — APIs, Resilience, and Backpressure** — retries, queues, and overload behavior.
-- **Module 18 — Cost and Token Attribution** — budgets, chargeback, and token ceilings.
-- **Module 20 — Production Readiness & Reliability** — SLOs under load and graceful degradation.
+- **Module 08 — Error Handling and Recovery** — retries, backoff, and overload behavior.
+- **Module 20 — Deployment and Scaling** — quotas, capacity, and graceful degradation under load.
+- **Module 19 — Observability and Debugging** — attributing throttling and saturation in production.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

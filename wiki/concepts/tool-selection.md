@@ -50,9 +50,9 @@ Under latency pressure, models shortcut to familiar tools. Counter with **forced
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 05 — Function Calling & JSON Schema** — how models consume tool metadata.
-- **Module 11 — Tool Catalogs & Least Privilege** — organizing and mounting tools.
-- **Module 15 — Routing, Intent Detection, and Tool Subsetting** — scalable selection.
+- **Module 05 — Tool Design and Integration** — schemas, metadata, and how models choose tools.
+- **Module 04 — System Prompts for Agents** — surfacing the right tool subset in context.
+- **Module 09 — Agent Design Patterns** — routing, intent detection, and scalable selection.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

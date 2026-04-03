@@ -42,9 +42,9 @@ Track **time-in-queue** per gate, **approval vs rejection** rates, and **overrid
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 20 — Human-in-the-Loop UX & Policy** — gate design and interfaces.
-- **Module 14 — Plan–Execute & Replanning** — approving plans before execution.
-- **Module 17 — Safety Architecture & Threat Modeling** — aligning gates to threats.
+- **Module 10 — Multi-Agent Patterns** — handoffs, approvals, and shared task ownership.
+- **Module 07 — Planning and Reasoning** — approving or editing plans before execution.
+- **Module 18 — Safety and Guardrails** — policy, gates, and threat-aligned oversight.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

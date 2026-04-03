@@ -50,9 +50,9 @@ Vendor **JSON mode** and **structured output** features differ in how strictly t
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 05 — Function Calling & JSON Schema** — argument and return contracts.
-- **Module 12 — Structured Extraction & Classification** — JSON mode patterns for non-tool flows.
-- **Module 16 — Validation, Repair Loops, and Type Safety** — Pydantic, Zod, and retry policies.
+- **Module 05 — Tool Design and Integration** — JSON Schema and structured tool arguments or returns.
+- **Module 04 — System Prompts for Agents** — constraining free-form outputs with clear formats.
+- **Module 08 — Error Handling and Recovery** — validation, repair loops, and type-safe retries.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

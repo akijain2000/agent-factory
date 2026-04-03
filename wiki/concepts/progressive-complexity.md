@@ -48,9 +48,9 @@ New engineers should read the **simplest** path first. Architecture diagrams sho
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 01 — From Prompt to Product** — when a single call suffices.
-- **Module 02 — Workflows, State Machines, and DAGs** — structured automation before agents.
-- **Module 10 — Multi-Agent Roles & Specialization** — justified decomposition.
+- **Module 01 — What Are Agents** — when a simple call suffices versus when to add agency.
+- **Module 02 — Agent Architectures** — structured automation, state, and decomposition choices.
+- **Module 11 — Anti-Patterns** — avoiding premature multi-agent or loop complexity.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

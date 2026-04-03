@@ -47,9 +47,9 @@ Summaries and embeddings add **async** jobs; plan queues and backoff. Vector ind
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 07 — Memory Tiers & Retention** — lifecycle and policy.
-- **Module 08 — RAG, Vector Stores, and Chunking** — retrieval pattern details.
-- **Module 09 — Knowledge Graphs & Structured Facts** — when tables or graphs beat vectors.
+- **Module 06 — Memory and Context Engineering** — tiers, retention, and lifecycle policy.
+- **Module 09 — Agent Design Patterns** — RAG, chunking, and retrieval-shaped agent designs.
+- **Module 18 — Safety and Guardrails** — trusting retrieved content without prompt-injection pitfalls.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

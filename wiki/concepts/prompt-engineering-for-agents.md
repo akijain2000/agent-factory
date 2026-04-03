@@ -44,9 +44,9 @@ Cross-check prompts against **AGENT_SPEC** dimensions: Architecture (stop rules)
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 01 — From Chat to Agents** — mental model shift.
-- **Module 23 — System Prompts as Code** — review, testing, and release.
-- **Module 18 — Prompt Injection & Untrusted Content** — safe composition patterns.
+- **Module 01 — What Are Agents** — mental model shift from chat to tool-using systems.
+- **Module 04 — System Prompts for Agents** — review, testing, and release of prompt artifacts.
+- **Module 18 — Safety and Guardrails** — prompt injection and safe composition with untrusted content.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

@@ -43,9 +43,9 @@ Ship a **tool catalog** (`tools/README.md`) listing each tool’s purpose, param
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 05 — Function Calling & JSON Schema** — argument design and validation.
-- **Module 06 — MCP: Servers, Resources, and Security** — standard integration surface.
-- **Module 11 — Tool Catalogs & Least Privilege** — operational boundaries and docs.
+- **Module 05 — Tool Design and Integration** — schemas, arguments, validation, and ergonomics.
+- **Module 21 — Protocols and Interoperability** — standard integration surfaces and contracts.
+- **Module 18 — Safety and Guardrails** — least privilege, boundaries, and safe execution.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

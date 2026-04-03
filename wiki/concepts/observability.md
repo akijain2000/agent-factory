@@ -46,9 +46,9 @@ Pair traces with **aggregate** dashboards: p95 step latency, tool error rates by
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 17 — Tracing, Spans, and Correlation IDs** — OpenTelemetry-style agent traces.
-- **Module 18 — Cost and Token Attribution** — budgets and chargeback patterns.
-- **Module 19 — Debugging Multi-Step Runs** — trace-driven incident response.
+- **Module 19 — Observability and Debugging** — tracing, spans, correlation IDs, and incident response.
+- **Module 20 — Deployment and Scaling** — cost, token budgets, and chargeback-style attribution.
+- **Module 08 — Error Handling and Recovery** — debugging failures and retries across multi-step runs.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

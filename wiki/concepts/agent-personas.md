@@ -50,9 +50,9 @@ Personas bundle **identity**, **values**, and **operational rules** into a coher
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 03 — System Prompts & Persona Design** — identity and policy layering.
-- **Module 10 — Multi-Agent Roles & Specialization** — personas in orchestrated systems.
-- **Module 14 — Behavioral Test Suites & Golden Traces** — validating persona adherence.
+- **Module 04 — System Prompts for Agents** — identity, policy layering, and persona design.
+- **Module 10 — Multi-Agent Patterns** — specialized roles in orchestrated systems.
+- **Module 17 — Agent Evaluation and Testing** — validating persona adherence and drift.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

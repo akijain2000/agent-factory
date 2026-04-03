@@ -45,9 +45,9 @@ Define **SLA** per surface (time to first token, max run duration). Log **run_id
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 19 — Deployment & Runtime Topology** — choosing serverless, containers, and edge for agent APIs.
-- **Module 20 — Production Readiness & Reliability** — SLAs, graceful shutdown, and orphaned-run recovery.
-- **Module 21 — Observability & Tracing** — correlating deployments with run spans and failures.
+- **Module 20 — Deployment and Scaling** — topology, SLAs, graceful shutdown, and orphaned-run recovery.
+- **Module 19 — Observability and Debugging** — correlating deploys with traces and failures.
+- **Module 18 — Safety and Guardrails** — production hardening and blast-radius controls.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

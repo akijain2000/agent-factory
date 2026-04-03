@@ -107,7 +107,7 @@ else {
 const promptText = sysPath ? read(sysPath) ?? "" : "";
 const persona = /\b(persona|role|identity)\b/i.test(promptText);
 const constraints = /\b(constraint|must not|do not|never|rules?)\b/i.test(promptText);
-const toolsSec = /\b(tool|function calling|mcp|invoke)\b/i.test(promptText);
+const toolsSec = /\b(tools?|function calling|mcp|invoke)\b/i.test(promptText);
 if (!sysPath) out("Prompt sections", "Fail", "no system prompt");
 else {
   const ok = persona && constraints && toolsSec;

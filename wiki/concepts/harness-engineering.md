@@ -44,10 +44,9 @@ Document **invariants** the harness guarantees (e.g., “no HTTP tool without UR
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 04 — ReAct, Tool Calling, and the Harness** — wiring control flow around the model.
-- **Module 08 — Tool Design & Safe Execution** — boundaries between model and runtime.
-- **Module 15 — Advanced Orchestration & State Machines** — graphs, checkpoints, and recovery.
-- **Module 16 — Testing & CI for Agents** — validating harness behavior.
+- **Module 03 — The Agent Loop** — wiring plan–act–observe control flow around the model.
+- **Module 05 — Tool Design and Integration** — boundaries between model, tools, and runtime.
+- **Module 22 — Self-Improvement and Harness Engineering** — graphs, checkpoints, and evolving harness behavior.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

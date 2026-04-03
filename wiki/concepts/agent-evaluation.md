@@ -50,9 +50,9 @@ Run **smoke** evals on every PR touching prompts or tools; run **full** suites n
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 14 — Behavioral Test Suites & Golden Traces** — scenario design and CI integration.
-- **Module 15 — Benchmarks, Rubrics, and LLM-as-Judge** — scalable grading patterns.
-- **Module 18 — Online Evaluation, A/B Testing, and Drift** — production measurement.
+- **Module 17 — Agent Evaluation and Testing** — benchmarks, rubrics, judges, and CI integration.
+- **Module 19 — Observability and Debugging** — online evaluation, drift, and production signals.
+- **Module 08 — Error Handling and Recovery** — measuring failure modes and recovery quality.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

@@ -48,9 +48,9 @@ As the number of bundles grows, add a **registry** with discovery metadata and d
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 10 — Multi-Agent Roles & Specialization** — orchestration patterns.
-- **Module 11 — Tool Catalogs & Least Privilege** — bundling and mounting tools.
-- **Module 13 — Plugins, Extensions, and Composable Harnesses** — Goose-style architecture.
+- **Module 10 — Multi-Agent Patterns** — orchestration and role specialization.
+- **Module 05 — Tool Design and Integration** — bundling, catalogs, and least-privilege mounts.
+- **Module 22 — Self-Improvement and Harness Engineering** — composable harnesses and extensions.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

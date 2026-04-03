@@ -50,9 +50,9 @@ Include **locale**, **model version**, and **tool schema hash** in cache keys wh
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 04 — Model Selection & Routing** — when to use which model.
-- **Module 18 — Cost and Token Attribution** — measurement and chargeback.
-- **Module 22 — Caching, Batching, and Context Pruning** — engineering levers.
+- **Module 13 — Framework Selection** — when to use which model or provider tier.
+- **Module 20 — Deployment and Scaling** — capacity, batching, and cost-aware scaling.
+- **Module 06 — Memory and Context Engineering** — caching, compaction, and context budgets.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 

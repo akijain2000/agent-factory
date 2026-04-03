@@ -45,10 +45,9 @@ Archive **artifacts** (prompt hashes, eval reports) with each release so complia
 
 These map to the **23-module Agent Factory course** (see [`../../course/README.md`](../../course/README.md) when published).
 
-- **Module 01 — Foundations & Lifecycle** — stages, ownership, and definitions of done.
-- **Module 16 — Testing & CI for Agents** — gates, fixtures, and regression suites.
-- **Module 19 — Deployment & Runtime Topology** — shipping and operating agents.
-- **Module 20 — Production Readiness & Reliability** — SLOs, incidents, and rollback.
+- **Module 01 — What Are Agents** — stages, ownership, and definitions of done.
+- **Module 17 — Agent Evaluation and Testing** — gates, fixtures, and regression suites.
+- **Module 20 — Deployment and Scaling** — shipping, operating, and rolling back agents.
 
 Full curriculum index: [`../../course/README.md`](../../course/README.md) (when present).
 
