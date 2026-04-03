@@ -130,5 +130,5 @@ Align with product needs: **compliance** may require **full logs** in external s
 
 ## Further reading
 
-- [State management (wiki)](../../wiki/concepts/state-management.md)
-- [Context window management (wiki)](../../wiki/concepts/context-window-management.md)
+- [State management (wiki)](../wiki/concepts/state-management.md)
+- [Context window management (wiki)](../wiki/concepts/context-window-management.md)

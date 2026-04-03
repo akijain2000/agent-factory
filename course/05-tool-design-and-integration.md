@@ -138,9 +138,9 @@ Extract the pattern: **small surface, sharp descriptions, explicit failure modes
 
 ## Further reading
 
-- [Tool design](../../wiki/concepts/tool-design.md)
-- [Tool selection](../../wiki/concepts/tool-selection.md)
-- [MCP deep dive](../../wiki/research/mcp-deep-dive.md)
+- [Tool design](../wiki/concepts/tool-design.md)
+- [Tool selection](../wiki/concepts/tool-selection.md)
+- [MCP deep dive](../wiki/research/mcp-deep-dive.md)
 
 ---
 

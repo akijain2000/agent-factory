@@ -120,8 +120,8 @@ Compare **inner** agent freedom vs **outer** harness policy in each.
 
 ## Further reading
 
-- [Harness engineering (wiki)](../../wiki/concepts/harness-engineering.md)
-- [Self-improving agents (wiki)](../../wiki/concepts/self-improving-agents.md)
-- [AutoAgent harness patterns (wiki)](../../wiki/research/autoagent-harness-patterns.md)
-- [AutoAgent harness loop (good example)](../../wiki/examples/good/autoagent-harness-loop.md)
-- [Hermes self-improving (good example)](../../wiki/examples/good/hermes-self-improving.md)
+- [Harness engineering (wiki)](../wiki/concepts/harness-engineering.md)
+- [Self-improving agents (wiki)](../wiki/concepts/self-improving-agents.md)
+- [AutoAgent harness patterns (wiki)](../wiki/research/autoagent-harness-patterns.md)
+- [AutoAgent harness loop (good example)](../wiki/examples/good/autoagent-harness-loop.md)
+- [Hermes self-improving (good example)](../wiki/examples/good/hermes-self-improving.md)

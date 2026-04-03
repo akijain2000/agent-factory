@@ -8,6 +8,8 @@ Concise definitions for vocabulary used across agent design, runtime, and operat
 
 **Agent Loop** -- The core control cycle (observe context, decide, act via tools, update state) that repeats until completion, failure, or an external halt; quality depends on bounds, recovery, and observability on each iteration.
 
+**Behavioral Test** -- A test that validates agent behavior end-to-end: given an input scenario and tool stubs, assert on the sequence of actions, final output, or side effects rather than internal implementation details.
+
 **Autonomous Loop** -- An agent loop that runs with minimal human intervention across many steps; risk scales with tool power, missing guardrails, and unclear stop conditions.
 
 **Chain of Thought** -- Intermediate natural-language reasoning steps emitted before a final answer; improves reliability on some tasks but increases tokens and can leak reasoning you intended to keep internal.
@@ -45,6 +47,10 @@ Concise definitions for vocabulary used across agent design, runtime, and operat
 **Fallback** -- A secondary path when the primary tool, model, or plan fails, such as a simpler tool, cached answer, or **human-in-the-loop** escalation.
 
 **Fan-Out** -- Dispatching many parallel subtasks (to tools, workers, or sub-agents) from one decision; needs aggregation, **rate limiting**, and idempotency to stay safe.
+
+**Feedback Loop** -- A cycle where agent outputs (traces, scores, user corrections) feed back into improving prompts, skills, tool policies, or retrieval—either within a session (online) or across sessions (offline batch).
+
+**Framework** -- A library or platform that provides pre-built primitives for agent construction (loop management, tool routing, state, checkpointing), such as LangGraph, CrewAI, or OpenAI Agents SDK; trades flexibility for faster scaffolding.
 
 **Function Calling** -- Structured invocation of named tools with JSON (or schema-conformant) arguments returned by the model; the standard bridge between LLMs and side effects.
 
@@ -86,6 +92,8 @@ Concise definitions for vocabulary used across agent design, runtime, and operat
 
 **Planning** -- Decomposing a goal into ordered steps or subgoals inside the model or in external code; pairs with **task decomposition** and **tool selection**.
 
+**Program.md** -- A versioned artifact (often markdown) that holds the evolving system prompt, tool policies, evaluation hooks, and stop conditions for an agent; the unit of change in harness-driven optimization loops like AutoAgent.
+
 **Prompt Injection** -- Attacks that embed instructions in untrusted content to override developer intent; mitigated with **guardrails**, tool allowlists, and separation of trusted vs untrusted text.
 
 **RAG** -- Abbreviation for **Retrieval-Augmented Generation**; see below.
@@ -111,6 +119,8 @@ Concise definitions for vocabulary used across agent design, runtime, and operat
 **Short-Term Memory** -- In-context conversation and scratchpad content within the current **context window**; volatile unless **checkpointed** externally.
 
 **State Machine** -- Explicit states and transitions governing when tools run and when the run ends; reduces ambiguity compared to a fully free-form loop.
+
+**Stop Condition** -- The explicit rule or set of rules that terminates an agent loop: step caps, cost limits, user confirmation, task-complete signals, or timeout—without one, agents run forever or until they exhaust resources.
 
 **Streaming** -- Emitting model tokens or events incrementally to clients for latency perception and progressive UI; the harness must still parse final **structured output** when required.
 

@@ -132,6 +132,6 @@ Measure **queue time** at gates; if humans are always behind, agents will be byp
 
 ## Further reading
 
-- [Guardrails (wiki)](../../wiki/concepts/guardrails.md)
-- [Sandboxing (wiki)](../../wiki/concepts/sandboxing.md)
-- [Agent security (wiki)](../../wiki/concepts/agent-security.md)
+- [Guardrails (wiki)](../wiki/concepts/guardrails.md)
+- [Sandboxing (wiki)](../wiki/concepts/sandboxing.md)
+- [Agent security (wiki)](../wiki/concepts/agent-security.md)

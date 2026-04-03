@@ -4,7 +4,11 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 
 type S = "Pass" | "Warn" | "Fail";
-const out = (n: string, s: S, m: string) => console.log(`[${s}] ${n}: ${m}`);
+let hasFail = false;
+const out = (n: string, s: S, m: string) => {
+  if (s === "Fail") hasFail = true;
+  console.log(`[${s}] ${n}: ${m}`);
+};
 const root = path.resolve(process.argv[2] ?? ".");
 const PROMPTS = ["system-prompt.md", "SYSTEM_PROMPT.md", "system_prompt.md", "prompts/system.md", "prompts/system-prompt.md"];
 const SECRET_RES = [
@@ -117,3 +121,5 @@ else {
     ok ? "persona, constraints, tool cues" : `persona=${persona} constraints=${constraints} tools=${toolsSec}`,
   );
 }
+
+process.exit(hasFail ? 1 : 0);

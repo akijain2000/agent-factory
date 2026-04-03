@@ -122,5 +122,5 @@ A sound simplification path: remove the **last** agent you added; keep tools and
 
 ## Further reading
 
-- [Anti-patterns research (wiki)](../../wiki/research/anti-patterns.md)
-- [Bad examples (wiki)](../../wiki/examples/bad/) — e.g. [god-agent](../../wiki/examples/bad/god-agent.md), [over-tooled-agent](../../wiki/examples/bad/over-tooled-agent.md), [context-stuffing-agent](../../wiki/examples/bad/context-stuffing-agent.md), [premature-autonomy-agent](../../wiki/examples/bad/premature-autonomy-agent.md)
+- [Anti-patterns research (wiki)](../wiki/research/anti-patterns.md)
+- [Bad examples (wiki)](../wiki/examples/bad/) — e.g. [god-agent](../wiki/examples/bad/god-agent.md), [over-tooled-agent](../wiki/examples/bad/over-tooled-agent.md), [context-stuffing-agent](../wiki/examples/bad/context-stuffing-agent.md), [premature-autonomy-agent](../wiki/examples/bad/premature-autonomy-agent.md)

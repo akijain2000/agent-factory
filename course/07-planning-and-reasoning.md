@@ -131,8 +131,8 @@ Every reasoning pass is billed. CoT/ToT should be **adaptive**, not default-on f
 
 ## Further reading
 
-- [Planning strategies](../../wiki/concepts/planning-strategies.md)
-- [AutoAgent harness patterns](../../wiki/research/autoagent-harness-patterns.md)
+- [Planning strategies](../wiki/concepts/planning-strategies.md)
+- [AutoAgent harness patterns](../wiki/research/autoagent-harness-patterns.md)
 
 ---
 

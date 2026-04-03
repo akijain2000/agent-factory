@@ -131,6 +131,6 @@ Optional stretch: implement a second track’s **handoff interface** only (schem
 
 - [AGENT_SPEC.md — quality standard for this repository](../AGENT_SPEC.md)
 - [Agent Maker meta-skill](../agent-maker/SKILL.md)
-- [Agent evaluation methods (wiki)](../../wiki/research/agent-evaluation-methods.md)
-- [Harness engineering (wiki)](../../wiki/concepts/harness-engineering.md)
-- [Production case studies (wiki)](../../wiki/research/production-case-studies.md)
+- [Agent evaluation methods (wiki)](../wiki/research/agent-evaluation-methods.md)
+- [Harness engineering (wiki)](../wiki/concepts/harness-engineering.md)
+- [Production case studies (wiki)](../wiki/research/production-case-studies.md)

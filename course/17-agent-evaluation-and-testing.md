@@ -142,6 +142,6 @@ Guardrails for A/B:
 
 ## Further reading
 
-- [Agent evaluation (wiki)](../../wiki/concepts/agent-evaluation.md)
-- [Agent testing patterns (wiki)](../../wiki/concepts/agent-testing-patterns.md)
-- [Agent evaluation methods (wiki)](../../wiki/research/agent-evaluation-methods.md)
+- [Agent evaluation (wiki)](../wiki/concepts/agent-evaluation.md)
+- [Agent testing patterns (wiki)](../wiki/concepts/agent-testing-patterns.md)
+- [Agent evaluation methods (wiki)](../wiki/research/agent-evaluation-methods.md)

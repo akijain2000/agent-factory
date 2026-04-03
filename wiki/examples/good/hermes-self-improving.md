@@ -14,6 +14,45 @@ Without promotion criteria, “self-improving” becomes “self-accumulating sl
 
 The loop composes with normal agent tooling: learning is another workflow with its own budget and guardrails.
 
+### Concrete skill stub
+
+A promoted skill lives as a versioned file with evidence metadata:
+
+```markdown
+# skills/summarize-pr.md
+---
+version: 1.2
+promoted: 2025-11-03
+evidence: reduced review-prep time by 40% across 23 tasks (gpt-4o)
+model_target: gpt-4o
+regression_suite: tests/skills/summarize-pr.yaml
+---
+
+## When to use
+User asks for a PR summary, diff explanation, or changelog draft.
+
+## Procedure
+1. Read the full diff via `gh pr diff`.
+2. Group changes by file type (src, test, config, docs).
+3. For each group, emit: what changed, why it likely changed, risk level.
+4. Produce a 3-bullet summary suitable for a Slack message.
+
+## Constraints
+- Never include raw secrets even if they appear in the diff.
+- If diff > 2000 lines, summarize by directory instead of file.
+```
+
+### Promotion gate checklist
+
+Before a candidate skill enters the default bundle:
+
+1. **Evidence threshold**: task success improved by ≥15% on ≥10 runs.
+2. **Regression pass**: existing skills still pass their test suites.
+3. **Human review**: at least one maintainer approved the diff.
+4. **Model-version tag**: skill specifies which model it was validated against.
+5. **Rollback hook**: the skill can be disabled by deleting its file without side effects.
+6. **Safety scan**: no credential patterns, no instructions to bypass guardrails.
+
 ### In practice
 
 Store skills as files (markdown, JSON, or small scripts) in a repo with PR review. Tag skills with **evidence**: which tasks improved, by how much, and which model version they targeted. Schedule periodic audits to retire skills that no longer help after a model upgrade.

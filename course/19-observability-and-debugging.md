@@ -126,5 +126,5 @@ If the model **lost the plot**, check **summarization** boundaries: did a digest
 
 ## Further reading
 
-- [Observability (wiki)](../../wiki/concepts/observability.md)
-- [Cost optimization (wiki)](../../wiki/concepts/cost-optimization.md)
+- [Observability (wiki)](../wiki/concepts/observability.md)
+- [Cost optimization (wiki)](../wiki/concepts/cost-optimization.md)

@@ -14,6 +14,57 @@ Tying optimization to **concrete benchmarks** avoids vibes-driven prompt twiddli
 
 This pattern shines in research and internal tooling where tasks are repeatable.
 
+### Example `program.md` fragment
+
+```markdown
+# program.md v3.7
+---
+last_score: 0.82
+last_updated: 2025-10-28
+eval_suite: evals/coding-tasks-v2.yaml
+rollback_to: v3.6
+---
+
+## System prompt
+You are a coding assistant. When the user describes a bug, reproduce it
+first, then fix it. Always run the test suite before declaring success.
+
+## Tool policies
+- file_read: always allowed
+- file_write: allowed only inside the user's project directory
+- shell_exec: blocked for rm, format, and sudo commands
+
+## Stop conditions
+- User confirms the fix works -> finish with summary
+- 8 tool calls without progress -> ask for clarification
+- Any test regression -> revert and report
+```
+
+### Scoring and rollback pseudocode
+
+```python
+def optimize_program(program_path: str, eval_suite: str, max_iters: int = 10):
+    current = load_program(program_path)
+    best_score = run_evals(current, eval_suite)
+
+    for i in range(max_iters):
+        candidate = meta_agent_propose_edit(current, eval_suite)
+        score = run_evals(candidate, eval_suite)
+
+        if score > best_score and no_safety_violations(candidate):
+            best_score = score
+            current = candidate
+            save_program(current, program_path, version=f"v{i}")
+            log(f"Iteration {i}: accepted (score {score:.2f})")
+        else:
+            log(f"Iteration {i}: rejected (score {score:.2f}, best {best_score:.2f})")
+            rollback(program_path)
+
+    return current, best_score
+```
+
+The outer loop is deterministic code, not the LLM. The meta-agent proposes prompt or policy diffs; the harness scores them and keeps or rolls back. Human review gates can intercept between `propose_edit` and `save_program` for high-risk changes.
+
 ### In practice
 
 Keep benchmarks **small but representative**; guard against overfitting to a dozen trivia questions. Require the meta-agent to cite which eval regressed before merging a prompt change. Use separate holdout sets updated monthly to detect drift.

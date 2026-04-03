@@ -38,7 +38,7 @@ If the user pastes only a system prompt, review it against the same dimensions (
 
 Read the file: `agent-maker/SKILL.md`
 
-Use the agent-maker skill for interactive creation: clarify goals, constraints, and deployment context before drafting structure. Align outputs with the canonical layout and required artifacts in `AGENT_SPEC.md` (README, system prompt, tool contracts, tests, separation of orchestration code). Prefer concrete file names and section headings the runtime can load, not prose that lives only in chat.
+Load and read that file fully before offering opinions or starting creation. Use the agent-maker skill for interactive creation: clarify goals, constraints, and deployment context before drafting structure. Align outputs with the canonical layout and required artifacts in `AGENT_SPEC.md` (README, system prompt, tool contracts, tests, separation of orchestration code). Prefer concrete file names and section headings the runtime can load, not prose that lives only in chat.
 
 Default assumption: the user wants an autonomous tool loop, not a single-shot chat wrapper. If they only need a markdown skill for an existing assistant, point them to **Skill Factory** instead of over-building an agent repository here.
 
@@ -46,7 +46,7 @@ Offer a short checklist after the first pass: README with architecture, versione
 
 ## Route C: Learn
 
-Two sub-routes. Offer both, then wait for **1** or **2**:
+Two sub-routes. If the user's topic already implies one, go directly; otherwise offer both:
 
 1. **Browse the 23-module course:** Read the file: `course/README.md`. Use it as the table of contents for the full sequence. When the user names a topic, open the matching module file under `course/` rather than summarizing from memory.
 2. **Browse the wiki:** Read the file: `wiki/INDEX.md`. Use it to navigate articles by theme. Prefer primary wiki pages over ad hoc explanations when the user wants depth, pattern citations, or vocabulary.
@@ -59,7 +59,7 @@ Encourage spaced learning: one module plus one wiki article often beats a long a
 
 Read the file: `prompt-decomposer/SKILL.md`
 
-Follow that skill when the user wants to turn a large prompt, runbook, or monolithic system description into separable agent components (sub-agents, tools, policies, evaluation hooks). The output should be structured and mappable to files under an agent repo, not a single blob prompt.
+Load and read that file fully before responding. Follow that skill when the user wants to turn a large prompt, runbook, or monolithic system description into separable agent components (sub-agents, tools, policies, evaluation hooks). The output should be structured and mappable to files under an agent repo, not a single blob prompt.
 
 If the source is a codebase rather than prose, still use the decomposer skill for the inventory step, then cross-check against `AGENT_SPEC.md` for where each piece should live (prompt versus tools versus orchestration).
 
@@ -101,3 +101,5 @@ Assume paths in this skill are relative to the Agent Factory repository root unl
 For **maintainers** of this repository, optional LLM runbooks and tooling live under `scripts/`: `compile-wiki.md`, `health-check.md`, `update-sources.md`, `discovery-keywords.txt`, and `validate-agent.ts`. End users on routes A through D do not need these unless they ask to maintain Agent Factory itself.
 
 When a user’s agent repo lives outside Agent Factory, run `validate-agent.ts` against **their** project root, not the Agent Factory tree, so results reflect their layout rather than this knowledge base’s layout.
+
+`validate-agent.ts` is written for Bun (`#!/usr/bin/env bun`). If Bun is not available, it also runs under Node 18+ with `npx tsx scripts/validate-agent.ts` or similar TypeScript runners.

@@ -140,6 +140,6 @@ Measure **end-to-end success**, not “more agents = more serious.”
 
 ## Further reading
 
-- [Multi-agent orchestration (wiki)](../../wiki/concepts/multi-agent-orchestration.md)
-- [Paperclip orchestration analysis (wiki)](../../wiki/research/paperclip-orchestration-analysis.md)
-- [Multi-agent landscape (wiki)](../../wiki/research/multi-agent-landscape.md)
+- [Multi-agent orchestration (wiki)](../wiki/concepts/multi-agent-orchestration.md)
+- [Paperclip orchestration analysis (wiki)](../wiki/research/paperclip-orchestration-analysis.md)
+- [Multi-agent landscape (wiki)](../wiki/research/multi-agent-landscape.md)

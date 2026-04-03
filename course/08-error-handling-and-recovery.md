@@ -131,8 +131,8 @@ while steps < max_steps:
 
 ## Further reading
 
-- [Error recovery](../../wiki/concepts/error-recovery.md)
-- [Hermes agent deep dive](../../wiki/research/hermes-agent-deep-dive.md)
+- [Error recovery](../wiki/concepts/error-recovery.md)
+- [Hermes agent deep dive](../wiki/research/hermes-agent-deep-dive.md)
 
 ---
 

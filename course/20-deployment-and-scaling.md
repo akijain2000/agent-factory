@@ -119,6 +119,6 @@ async def call_with_limits(client, coro_factory, key: str):
 
 ## Further reading
 
-- [Deployment patterns (wiki)](../../wiki/concepts/deployment-patterns.md)
-- [Rate limiting (wiki)](../../wiki/concepts/rate-limiting.md)
-- [Cost optimization (wiki)](../../wiki/concepts/cost-optimization.md)
+- [Deployment patterns (wiki)](../wiki/concepts/deployment-patterns.md)
+- [Rate limiting (wiki)](../wiki/concepts/rate-limiting.md)
+- [Cost optimization (wiki)](../wiki/concepts/cost-optimization.md)

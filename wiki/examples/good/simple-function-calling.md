@@ -8,6 +8,41 @@ This example is a deliberately tiny agent: a loop that (1) sends the user goal a
 
 **Bare ReAct with structured tool calls.** The “tools” are plain functions registered in a dict; the model’s tool schema is minimal (one or two operations). The host program owns iteration caps, logging, and error formatting back to the model.
 
+## The code
+
+```python
+import json, openai
+
+tools = {
+    "lookup": lambda city: f"72°F, sunny in {city}",
+    "finish": lambda answer: answer,
+}
+schema = [
+    {"type": "function", "function": {"name": "lookup", "parameters": {"type": "object", "properties": {"city": {"type": "string"}}, "required": ["city"]}}},
+    {"type": "function", "function": {"name": "finish", "parameters": {"type": "object", "properties": {"answer": {"type": "string"}}, "required": ["answer"]}}},
+]
+
+def run(goal: str, max_steps: int = 6) -> str:
+    messages = [{"role": "system", "content": "Use tools to answer."}, {"role": "user", "content": goal}]
+    for _ in range(max_steps):
+        resp = openai.chat.completions.create(model="gpt-4o-mini", messages=messages, tools=schema)
+        msg = resp.choices[0].message
+        if not msg.tool_calls:
+            return msg.content  # final answer without tool
+        for tc in msg.tool_calls:
+            fn, args = tc.function.name, json.loads(tc.function.arguments)
+            result = tools[fn](**args)
+            if fn == "finish":
+                return result
+            messages.append(msg)
+            messages.append({"role": "tool", "tool_call_id": tc.id, "content": str(result)})
+    return "max steps reached"
+
+print(run("What's the weather in Tokyo?"))
+```
+
+The entire agent is ~20 lines of logic. The model either returns a final text answer or emits tool calls; the host runs them and feeds results back. `finish` exits the loop explicitly; the step cap prevents runaways.
+
 ## What makes it good
 
 The entire system fits in one screen of code, which makes it ideal for teaching and for proving integration paths (auth, logging, tracing) before adopting heavier orchestration. Failure modes are obvious: bad JSON, exceptions from tools, or runaway loops—each has a direct fix. Tests can stub the model to emit deterministic tool sequences.

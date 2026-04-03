@@ -128,9 +128,9 @@ Instrument **token counts** per segment so you know what to trim when the budget
 
 ## Further reading
 
-- [Memory systems](../../wiki/concepts/memory-systems.md)
-- [Context engineering](../../wiki/concepts/context-engineering.md)
-- [Context and memory architecture](../../wiki/research/context-memory-architecture.md)
+- [Memory systems](../wiki/concepts/memory-systems.md)
+- [Context engineering](../wiki/concepts/context-engineering.md)
+- [Context and memory architecture](../wiki/research/context-memory-architecture.md)
 
 ---
 

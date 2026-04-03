@@ -142,5 +142,5 @@ Exercise while reading: for each demo, list (1) **what state is carried** betwee
 
 ## Further reading
 
-- [Andrew Ng agentic patterns (wiki)](../../wiki/research/andrew-ng-patterns.md)
-- [Feedback loops (wiki)](../../wiki/concepts/feedback-loops.md)
+- [Andrew Ng agentic patterns (wiki)](../wiki/research/andrew-ng-patterns.md)
+- [Feedback loops (wiki)](../wiki/concepts/feedback-loops.md)

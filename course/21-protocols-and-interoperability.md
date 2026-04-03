@@ -115,6 +115,6 @@ Your goal is not memorizing vendors but recognizing **recurring layers**: schema
 
 ## Further reading
 
-- [MCP deep dive (wiki)](../../wiki/research/mcp-deep-dive.md)
-- [A2A deep dive (wiki)](../../wiki/research/a2a-deep-dive.md)
-- [MCP tool server (good example)](../../wiki/examples/good/mcp-tool-server.md)
+- [MCP deep dive (wiki)](../wiki/research/mcp-deep-dive.md)
+- [A2A deep dive (wiki)](../wiki/research/a2a-deep-dive.md)
+- [MCP tool server (good example)](../wiki/examples/good/mcp-tool-server.md)
