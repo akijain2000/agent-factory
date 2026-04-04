@@ -136,6 +136,16 @@ Extract the pattern: **small surface, sharp descriptions, explicit failure modes
 
 ---
 
+### Empirical note: error taxonomy as quality driver
+
+Autoresearch across 20 agents (96 tool schemas) found that **error taxonomy with retryable flags** was the single most impactful tool design addition (+3.0 score improvement). Every tool needs at minimum: `TIMEOUT` (retryable), `INVALID_INPUT` (not retryable), `PERMISSION_DENIED` (not retryable), plus 2-3 domain-specific codes. Adding `idempotency_key` fields to mutating tools and `cursor`-based pagination to list tools completed the production-readiness picture.
+
+Anti-patterns that decreased tool design scores: adding idempotency to read-only tools (noise), adding pagination to single-item tools (wrong), and specifying timeouts without backoff strategy (incomplete).
+
+See [Factory Showcase wave-02-tool-design.md](https://github.com/akijain2000/factory-showcase/blob/main/grading/autoresearch-logs/wave-02-tool-design.md).
+
+---
+
 ## Further reading
 
 - [Tool design](../wiki/concepts/tool-design.md)

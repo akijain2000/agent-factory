@@ -76,6 +76,10 @@ Start from [`../wiki/INDEX.md`](../wiki/INDEX.md) if you prefer browsing by topi
 
 Treat **[AGENT_SPEC.md](../AGENT_SPEC.md)** as the repository’s cross-cutting quality bar: clarity of purpose, tooling discipline, safety, observability, and operational readiness. Use it when reviewing your own capstone or a teammate’s agent PR.
 
+## Autoresearch integration
+
+Twelve modules (03, 05, 06, 08, 11, 12, 17, 18, 19, 20, 22, 23) include **"Empirical note"** sections drawn from a Karpathy-style autoresearch loop across 20 agents (~100 iterations). These sections connect each module’s topic to ranked, quantified findings about what actually raises agent quality scores. For the full ranked breakdown, see the [Factory Showcase LEARNINGS.md](https://github.com/akijain2000/factory-showcase/blob/main/grading/autoresearch-logs/LEARNINGS.md) or the distillate in the [agent-factory README](../README.md#what-makes-a-910-agent-autoresearch-distillate).
+
 ## Companion project: Skill Factory
 
 Agents and **skills** (procedures loaded by hosts) share engineering concerns: scoping, discovery, verification, and safety. The companion **Skill Factory** project lives at [`../../skill-factory/`](../../skill-factory/README.md) relative to this folder (sibling of `agent-factory` under the same parent workspace). Use it when you want parallel depth on authoring reusable **SKILL.md** assets and validation loops.

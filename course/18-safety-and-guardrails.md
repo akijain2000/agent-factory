@@ -130,6 +130,18 @@ Measure **queue time** at gates; if humans are always behind, agents will be byp
 
 ---
 
+### Empirical note: HITL gates and SECURITY.md
+
+Autoresearch found that **HITL (Human-In-The-Loop) gates with explicit timeout behavior** were the most production-critical safety feature. Without HITL, autonomous agents could execute destructive operations without oversight. The timeout specification (what happens if human doesn't respond in 5 minutes: fail closed, notify, degrade) was consistently overlooked in initial designs.
+
+Adding **SECURITY.md** with domain-specific threat models improved safety scores by +4.0. Generic "security is important" notes scored poorly; agents with specific threats (e.g., "path traversal for file organizer", "SQL injection for migration planner", "entity resolution poisoning for knowledge graph") scored significantly higher.
+
+Data classification tables (labeling data as public/internal/confidential/restricted) and incident response playbooks were the other high-impact additions.
+
+See [Factory Showcase wave-07-safety-memory.md](https://github.com/akijain2000/factory-showcase/blob/main/grading/autoresearch-logs/wave-07-safety-memory.md).
+
+---
+
 ## Further reading
 
 - [Guardrails (wiki)](../wiki/concepts/guardrails.md)

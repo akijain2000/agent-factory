@@ -490,16 +490,16 @@ Agent projects are evaluated against [AGENT_SPEC.md](AGENT_SPEC.md) across 8 dim
 
 | Dimension | What a 10 looks like |
 |-----------|---------------------|
-| **1. Architecture** | Clear agent loop, defined tools, state management, explicit stop conditions, documented control flow |
-| **2. System Prompt** | Persona, constraints, tool instructions, behavioral guardrails, all in a dedicated file |
-| **3. Tool Design** | Structured I/O schemas, error handling, timeouts, clear descriptions, bounded tool set |
-| **4. Memory** | Appropriate memory type, no context abuse, compaction strategy, persistence where needed |
-| **5. Safety** | Sandboxing, prompt injection defense, human-in-the-loop for high-risk, least privilege |
-| **6. Testing** | Behavioral tests, trace analysis, baseline comparison, edge case coverage |
-| **7. Observability** | Tracing, structured logging, cost tracking, alerting on anomalies |
-| **8. Documentation** | Architecture diagram, tool catalog, deployment guide, quickstart |
+| **1. Architecture** | Typed state machine (enum + transition table), circuit breakers (`max_steps`, `max_wall_time_s`, `max_spend_usd`), clear boundaries |
+| **2. System Prompt** | Persona, tool discipline, refusal paths, HITL gates with timeout, memory strategy, cost awareness, version tag |
+| **3. Tool Design** | Per-tool error taxonomy with `retryable` flag, timeouts + backoff, idempotency for mutations, cursor pagination |
+| **4. Memory** | Ephemeral vs durable distinction, retention policies, PII redaction, schema migration plan |
+| **5. Safety** | SECURITY.md with domain threat model, HITL for destructive ops, sandboxed execution, adversarial testing |
+| **6. Testing** | 4 scenario classes: happy path, error recovery, adversarial, regression; CI-integrated with tool mocks |
+| **7. Observability** | Tracing (trace_id/span_id), domain-specific SLOs with alerts, cost tracking per request, health endpoint |
+| **8. Documentation** | Mermaid architecture diagram, env variable matrix, known limitations, deployment + rollback guide |
 
-**Minimum viable score:** 5/10 average across all dimensions, no single dimension below 3/10.
+**Minimum viable score:** 5/10 average, no dimension below 3/10. **Autoresearch-grade:** >= 9.0 overall.
 
 ### Canonical agent project structure
 
@@ -582,6 +582,54 @@ Skills are markdown files loaded by agents at runtime. Agents are the autonomous
 ### Factory Showcase
 
 **[Factory Showcase](https://github.com/akijain2000/factory-showcase)** is a testing companion with 20 agents and 20 skills created using both factories, then evaluated through a 5-cycle Karpathy loop + 7-wave autoresearch improvement loop (~100 iterations). Final scores: AGENT_SPEC mean 9.04/10, CLASSic mean 9.02/10. Contains grading reports, per-wave learning logs documenting what increases and decreases agent scores, and a comprehensive [LEARNINGS.md](https://github.com/akijain2000/factory-showcase/blob/main/grading/autoresearch-logs/LEARNINGS.md) that distills the empirical findings for anyone building agents.
+
+---
+
+## What Makes a 9/10 Agent (Autoresearch Distillate)
+
+These findings come from running a Karpathy-style autoresearch loop across 20 agents over ~100 iterations. Each wave targeted one quality dimension, measured the impact, and logged what worked. The full data is in [Factory Showcase LEARNINGS.md](https://github.com/akijain2000/factory-showcase/blob/main/grading/autoresearch-logs/LEARNINGS.md).
+
+### Ranked by impact (score improvement per wave)
+
+| Change | Dimension | Score Δ | Why it works |
+|--------|-----------|---------|-------------|
+| Observability from zero | Observability | +9.0 | Agents without tracing, SLOs, or cost tracking have 0/10 observability. Adding all three in one pass produces the largest jump. |
+| Real state machines | Source Code | +5.0 | Typed enum states + transition tables replace stubs. Agents can't enter undefined states. Enables checkpoint/resume. |
+| SECURITY.md + threat model | Safety | +4.0 | Domain-specific threats beat generic "security is important" notes. |
+| 4 test types | Testing | +4.0 | Happy path + error recovery + adversarial + regression. Happy-path-only testing is the #1 testing anti-pattern. |
+| Error taxonomy per tool | Tool Design | +3.0 | `retryable` flag on each error code lets the agent distinguish "retry" from "give up." |
+| README + Mermaid + env matrix | Documentation | +3.0 | Architecture diagrams, env var tables, and honest known limitations. |
+| HITL + refusal + memory strategy | System Prompt | +2.5 | Human approval gates with timeout behavior + explicit "when NOT to act" rules. |
+
+### Anti-patterns that tank scores
+
+- **NotImplementedError stubs** — skeleton code scores 0/10 on source code
+- **Happy-path-only tests** — no evidence of failure handling = Testing < 5
+- **Template slop** — identical copy-paste across agents is detected and penalized
+- **No circuit breakers** — `max_steps` + `max_wall_time_s` + `max_spend_usd` are the essential trio
+- **Generic SLOs** — same latency target for a real-time responder and a batch planner shows no domain understanding
+- **Missing error taxonomy** — tools without error docs force agents to guess retry behavior
+
+### The 9/10 agent checklist
+
+If you read one thing before building an agent, check these boxes:
+
+- [ ] State machine with typed enum states and transition table
+- [ ] Circuit breakers: `max_steps`, `max_wall_time_s`, `max_spend_usd`
+- [ ] Per-tool error taxonomy with `retryable` flag
+- [ ] System prompt with refusal paths, HITL gates, memory strategy, cost awareness
+- [ ] 4 test scenarios: happy path, error recovery, adversarial, regression
+- [ ] SLOs with domain-specific numerical targets and alert rules
+- [ ] `SECURITY.md` with domain-specific threat model
+- [ ] README with Mermaid architecture diagram, env variable matrix, known limitations
+- [ ] Tracing with trace_id/span_id, cost tracking per request
+- [ ] Deploy config with Dockerfile, health check, required secrets list
+
+### How this changes what Agent Factory produces
+
+The `agent-maker/SKILL.md` now includes copy-pasteable templates for all of the above (error schema, env matrix, SECURITY.md outline, SLO table, state enum). The `AGENT_SPEC.md` now encodes these findings in its score anchors — a 10 on Testing requires four scenario classes, a 10 on Safety requires SECURITY.md, and a new "Autoresearch-grade" tier (≥ 9.0) exists for agents meeting all empirical quality drivers.
+
+Course modules 03, 05, 06, 08, 11, 12, 17, 18, 19, 20, 22, and 23 now include empirical notes linking their topic to these ranked findings.
 
 ---
 

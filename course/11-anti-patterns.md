@@ -120,6 +120,21 @@ A sound simplification path: remove the **last** agent you added; keep tools and
 
 ---
 
+### Validated anti-patterns from autoresearch
+
+The following anti-patterns were empirically validated across 20 agents in the Factory Showcase autoresearch loop — agents exhibiting these patterns consistently scored below 7.0/10:
+
+- **NotImplementedError stubs**: Skeleton code with `raise NotImplementedError` scores 0/10 on source code. Even a minimal loop with basic error handling is vastly better.
+- **Happy-path-only testing**: Having only one test showing the agent working correctly provides no evidence of failure handling. Minimum viable: happy path + error recovery + adversarial + regression.
+- **Template slop**: Copy-paste sections across agents (identical refusal paths, identical memory strategy) are detected by evaluators and penalized.
+- **No circuit breakers**: Without `max_steps`, `max_wall_time_s`, `max_spend_usd`, agents can run forever on bad inputs.
+- **Generic SLOs**: Applying the same latency target (e.g., p99 < 30s) to both an incident responder (needs p99 < 10s) and a migration planner (tolerates p99 < 120s) shows no domain understanding.
+- **Missing error taxonomy**: Tools without ANY error documentation force agents to guess error handling behavior.
+
+See [Factory Showcase LEARNINGS.md](https://github.com/akijain2000/factory-showcase/blob/main/grading/autoresearch-logs/LEARNINGS.md).
+
+---
+
 ## Further reading
 
 - [Anti-patterns research (wiki)](../wiki/research/anti-patterns.md)

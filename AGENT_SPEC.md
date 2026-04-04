@@ -119,7 +119,7 @@ Dimensions are scored independently but **couple in practice**. Weak **Tool Desi
 
 **5:** Explicit loop (plan → act → observe) in one module; tools registered in a registry; basic session id and message list persisted. Failure modes (max steps, max tokens) exist but may be coarse.
 
-**10:** Documented state machine or equivalent; clear boundaries between policy, planning, and execution; idempotent tool calls where possible; cancellation and timeouts wired through the stack; upgrade path for multi-agent or delegated sub-agents without rewriting core loop.
+**10:** Documented state machine with explicit typed states (e.g., enum: IDLE, PLANNING, EXECUTING, WAITING_TOOL, ERROR, DONE) and a transition table enforcing valid state changes; clear boundaries between policy, planning, and execution; idempotent tool calls where possible; cancellation and timeouts wired through the stack; circuit breakers for `max_steps`, `max_wall_time_s`, and `max_spend_usd` checked each iteration; upgrade path for multi-agent or delegated sub-agents without rewriting core loop.
 
 ### 2. System Prompt
 
@@ -127,7 +127,7 @@ Dimensions are scored independently but **couple in practice**. Weak **Tool Desi
 
 **5:** Single `system-prompt.md` with role, task, and tool-use rules; some guardrails (“don’t leak secrets”) but incomplete edge cases; versioning is informal (git only).
 
-**10:** Precise persona and scope; explicit tool-calling discipline (when to call, when to abstain, how to format arguments); structured final answers where needed; refusal and escalation paths; changelog or version tag in prompt header; alignment between prompt text and actual tool names in code.
+**10:** Precise persona and scope; explicit tool-calling discipline (when to call, when to abstain, how to format arguments); structured final answers where needed; refusal and escalation paths with human handoff triggers; HITL gates for destructive or high-cost operations with documented timeout behavior; memory strategy notes (what is ephemeral vs durable); cost awareness section with model tier routing guidance; changelog or version tag in prompt header; alignment between prompt text and actual tool names in code.
 
 ### 3. Tool Design
 
@@ -135,7 +135,7 @@ Dimensions are scored independently but **couple in practice**. Weak **Tool Desi
 
 **5:** JSON Schema (or equivalent) for inputs; tools return structured success/error objects; global timeout per request; basic rate limiting on expensive calls.
 
-**10:** Narrow, composable tools with stable contracts; explicit error taxonomy (retryable vs fatal); per-tool timeouts and budgets; pagination and idempotency keys for mutating operations; documentation of side effects and required permissions; dry-run or preview modes where appropriate.
+**10:** Narrow, composable tools with stable contracts; explicit error taxonomy **per tool** with stable error codes and a `retryable` boolean in error responses; per-tool timeouts, rate limits, and backoff strategy (exponential with jitter); pagination and cursor-based traversal for list operations; idempotency keys for all mutating operations; documentation of side effects, required permissions, and auth requirements; dry-run or preview modes for destructive operations.
 
 ### 4. Memory Strategy
 
@@ -151,7 +151,7 @@ Dimensions are scored independently but **couple in practice**. Weak **Tool Desi
 
 **5:** Allowlisted tools or environments; secrets not in prompt; basic content filters or output rules; manual kill switch.
 
-**10:** Defense in depth: sandboxed execution, least-privilege credentials, separate approval flows for high-impact actions, injection-resistant parsing of untrusted inputs, documented threat model, incident runbook, and regular red-team or automated adversarial checks commensurate with risk.
+**10:** Defense in depth: sandboxed execution, least-privilege credentials, separate approval flows (HITL gates) for high-impact actions with timeout and escalation behavior; injection-resistant parsing of untrusted inputs; `SECURITY.md` with domain-specific threat model, attack surface analysis, data classification, and incident response playbook; input validation in agent code; regular red-team or automated adversarial checks commensurate with risk.
 
 ### 6. Testing
 
@@ -159,7 +159,7 @@ Dimensions are scored independently but **couple in practice**. Weak **Tool Desi
 
 **5:** Unit tests for tools; a handful of scripted scenarios; occasional snapshot of a “good” trace stored informally.
 
-**10:** Behavioral suite that runs in CI: fixtures for multi-step flows, assertions on final state or structured outputs, regression tests for fixed bugs, differential checks when prompts or models change; optional fuzzing of tool inputs; flaky-test policy.
+**10:** Behavioral suite that runs in CI covering four scenario classes: **happy path** (standard multi-step flow), **error recovery** (tool failures, retries, circuit breaker triggers), **adversarial** (prompt injection, malformed input, privilege escalation), and **regression** (domain-specific edge cases from past incidents); assertions on final state or structured outputs; differential checks when prompts or models change; tool mocks aligned with error taxonomy codes; optional fuzzing of tool inputs; flaky-test policy.
 
 ### 7. Observability
 
@@ -167,7 +167,7 @@ Dimensions are scored independently but **couple in practice**. Weak **Tool Desi
 
 **5:** Request-scoped logging; basic token or cost counters; simple dashboard or export.
 
-**10:** End-to-end tracing (trace id per run, spans for model and each tool); PII-safe log fields; cost and latency SLOs with alerts; sampling strategy documented; dashboards for error rate, tool latency, and model fallback behavior.
+**10:** End-to-end tracing (trace id per run, spans for model and each tool call) with W3C-compatible context propagation; PII-safe structured log fields with trace_id and span_id; cost and latency SLOs with **domain-specific numerical targets** (e.g., p99 latency, error rate, cost per request) and corresponding alert rules with runbook pointers; cost tracking per request (tokens + USD); health check endpoint (GET /health → 200 JSON); sampling strategy documented; dashboards for error rate, tool latency, cost trends, and model fallback behavior.
 
 ### 8. Documentation
 
@@ -175,7 +175,7 @@ Dimensions are scored independently but **couple in practice**. Weak **Tool Desi
 
 **5:** README with run instructions; list of tools; high-level diagram; deploy folder with enough to reproduce staging.
 
-**10:** Architecture diagram current with code; tool catalog with examples and failure modes; onboarding path for new developers; deployment and rollback guide; environment matrix; “known limitations” and roadmap; security and data-flow summary for reviewers.
+**10:** Architecture diagram (Mermaid or equivalent) current with code showing data flows and trust boundaries; tool catalog with examples and failure modes; onboarding path for new developers; deployment and rollback guide with Dockerfile or equivalent; environment variable matrix table (variable, required/optional, default, description, secret flag); explicit "known limitations" section with domain-specific constraints and workarounds; security and data-flow summary for reviewers; memory strategy documentation (ephemeral vs durable, retention, redaction).
 
 ---
 
@@ -199,6 +199,9 @@ Compliance requires **all** of the following to exist at repository root (or doc
 - **Tool definitions** must be validatable (schema or typed SDK) and **in sync** with runtime registration; CI should fail on drift if feasible.
 - **Tests** must run non-interactively in CI (no manual API keys in plaintext; use mocked tools or secret stores).
 - **deploy/** must document **required environment variables** and **resource limits** (CPU/memory/timeouts) if applicable.
+- **README** must include a **known limitations** section with at least three domain-specific constraints.
+- **README** must include an **environment variable matrix** (table with columns: variable name, required, default, description).
+- **tests/** must include at minimum: one happy-path scenario, one error-recovery scenario (tool failure + retry/circuit breaker), and one adversarial scenario (prompt injection or privilege escalation attempt).
 
 ### Recommended (not required for minimum compliance)
 
@@ -207,7 +210,7 @@ The following materially improve scores on **Testing**, **Observability**, and *
 | Artifact | Purpose |
 |----------|---------|
 | `CONTRIBUTING.md` or `docs/development.md` | How to run linters, formatters, and pre-commit hooks. |
-| `SECURITY.md` | Vulnerability reporting; high-level threat model pointer. |
+| `SECURITY.md` | Domain-specific threat model, attack surface analysis, data classification, incident response pointer. **Required for Safety scores >= 8.** |
 | `CHANGELOG.md` or release notes | Prompt and tool schema changes visible to operators. |
 | `.env.example` | Safe template for local development (no real secrets). |
 | Trace export config | OpenTelemetry or vendor-specific exporter documented in `deploy/`. |
@@ -295,7 +298,8 @@ Teams may map overall scores to tiers for internal communication:
 | **< 5.0** | **Below spec** | Not suitable for production agent workloads. |
 | **5.0 – 6.9** | **Pilot** | Internal or friendly users; elevated monitoring. |
 | **7.0 – 8.4** | **Production** | Customer-facing with standard SLOs and review. |
-| **≥ 8.5** | **Reference** | Exemplary; suitable as template for new agents. |
+| **8.5 – 8.9** | **Reference** | Exemplary; suitable as template for new agents. |
+| **≥ 9.0** | **Autoresearch-grade** | Meets all empirical quality drivers; production-hardened with full observability, adversarial testing, and domain-specific threat modeling. |
 
 ### Review workflow
 

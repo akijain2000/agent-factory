@@ -126,6 +126,14 @@ Instrument **token counts** per segment so you know what to trim when the budget
 
 ---
 
+### Empirical note: memory strategy as score driver
+
+Autoresearch found that explicit **memory strategy documentation** — distinguishing ephemeral (session-only) from durable (persistent) state, with retention policies and PII redaction rules — correlated with a +2.5 score improvement when bundled with refusal paths and HITL gates in system prompts. The key insight: agents that clearly state "conversation history is ephemeral; learned patterns are durable with 30-day retention; API keys and PII are never persisted" score significantly higher than those with no memory strategy at all.
+
+Schema migration planning (how memory format changes between versions) was a consistent gap across all 20 agents in the initial baseline.
+
+---
+
 ## Further reading
 
 - [Memory systems](../wiki/concepts/memory-systems.md)

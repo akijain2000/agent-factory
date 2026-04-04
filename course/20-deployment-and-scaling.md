@@ -117,6 +117,14 @@ async def call_with_limits(client, coro_factory, key: str):
 
 ---
 
+### Empirical note: deploy artifacts that matter
+
+Autoresearch across 20 agents found that deploy/ enrichment — Dockerfiles, health check configs, resource limits, and required secrets lists — improved documentation scores by +3.0. The pattern that scored highest: a Dockerfile with proper layer caching (COPY requirements.txt first, pip install, then COPY app), explicit health check probes with paths/delays/timeouts, and a required secrets table (name, purpose, rotation frequency).
+
+Agents deployed without **domain-specific SECURITY.md** scored consistently lower on safety. The autoresearch finding: SECURITY.md with threat models is as important for deployment readiness as Dockerfiles are for runtime readiness.
+
+---
+
 ## Further reading
 
 - [Deployment patterns (wiki)](../wiki/concepts/deployment-patterns.md)

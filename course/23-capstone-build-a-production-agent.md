@@ -107,6 +107,22 @@ A **pass** is not “it ran once”; it is **repeatable** acceptable behavior on
 
 ---
 
+### Autoresearch-validated quality bar
+
+The Factory Showcase autoresearch loop empirically validated what separates a 7/10 agent from a 9/10 agent across 20 production agent designs. Use these as your capstone quality targets:
+
+- **Source code**: Typed state machine enum + transition table + circuit breakers (not stubs)
+- **System prompt**: Refusal paths + HITL gates + memory strategy + cost awareness (not just persona)
+- **Tool design**: Error taxonomy with retryable flags per tool + idempotency for mutations (not just schemas)
+- **Testing**: 4 scenario types — happy path, error recovery, adversarial, regression (not just happy path)
+- **Observability**: SLOs with domain-specific numbers + tracing + cost tracking (not just logs)
+- **Safety**: SECURITY.md with domain threat model + HITL with timeout behavior (not just "be safe")
+- **Documentation**: Mermaid diagram + env matrix + honest limitations (not just a README)
+
+See the full ranked breakdown: [Factory Showcase LEARNINGS.md](https://github.com/akijain2000/factory-showcase/blob/main/grading/autoresearch-logs/LEARNINGS.md).
+
+---
+
 ## Graduation checklist
 
 Before you call the capstone done:

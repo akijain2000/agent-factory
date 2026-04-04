@@ -124,6 +124,21 @@ If the model **lost the plot**, check **summarization** boundaries: did a digest
 
 ---
 
+### Empirical note: observability as the largest single-wave improvement
+
+In the Factory Showcase autoresearch loop, **observability went from 0.0 to 9.0 in a single wave** — the largest improvement across all seven waves. The baseline for all 20 agents was zero observability infrastructure: no tracing, no SLOs, no monitoring, no cost tracking.
+
+The most impactful additions (ranked):
+1. **SLOs with domain-specific numerical targets** — "Latency p99 < 30s, error rate < 2%" is measurable; "should be fast" is not.
+2. **Cost tracking per request** — LLM agents have variable costs; tracking tokens + USD per request prevents budget blow-ups.
+3. **W3C traceparent context propagation** — Enables distributed tracing across agent-to-agent calls.
+4. **Health check endpoints** — `GET /health → 200 JSON` enables load balancer health checks and k8s probes.
+5. **Alert rules with runbook pointers** — Not all alerts are equal; error rate > 5% is critical, cost anomaly is warning.
+
+See [Factory Showcase wave-05-observability.md](https://github.com/akijain2000/factory-showcase/blob/main/grading/autoresearch-logs/wave-05-observability.md).
+
+---
+
 ## Further reading
 
 - [Observability (wiki)](../wiki/concepts/observability.md)

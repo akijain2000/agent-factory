@@ -129,6 +129,16 @@ while steps < max_steps:
 
 ---
 
+### Empirical note: circuit breakers and error recovery
+
+Autoresearch validated that **missing circuit breakers** and **missing tool error taxonomy** were the two most common failure modes across 20 production agent designs. Agents without `max_steps`, `max_wall_time_s`, and `max_spend_usd` limits could run indefinitely on bad inputs. Agents without per-tool retryable/fatal error classification retried fatal errors and gave up on retryable ones.
+
+The error recovery test pattern (tool returns retryable error → agent retries once → succeeds; tool returns fatal error → agent stops gracefully) was the highest-value addition to test suites, enabling detection of infinite retry loops and silent failure swallowing.
+
+See [Factory Showcase wave-03-source-code.md](https://github.com/akijain2000/factory-showcase/blob/main/grading/autoresearch-logs/wave-03-source-code.md).
+
+---
+
 ## Further reading
 
 - [Error recovery](../wiki/concepts/error-recovery.md)

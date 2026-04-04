@@ -93,6 +93,61 @@ Label each artifact with **version** or **date** in a comment header so prompt a
 - Error handling covers: retryable vs fatal dispatch, circuit breakers (max_steps, max_wall_time_s, max_spend_usd), escalation when circuit trips
 - Memory strategy distinguishes: ephemeral (session), durable (persistent), retention policy, redaction rules for PII/secrets, schema migration plan
 
+**Copy-pasteable templates for 9/10 artifacts:**
+
+Tool error response schema (every tool should return this on failure):
+```json
+{
+  "ok": false,
+  "error": {
+    "code": "DOMAIN_SPECIFIC_CODE",
+    "message": "Human-readable description",
+    "retryable": true,
+    "details": {}
+  }
+}
+```
+
+Environment variable matrix (for README):
+
+| Variable | Required | Default | Description | Secret |
+|----------|----------|---------|-------------|--------|
+| `AGENT_MODEL_ID` | yes | -- | LLM model identifier | no |
+| `AGENT_API_KEY` | yes | -- | Provider API key | **yes** |
+| `MAX_STEPS` | no | 20 | Circuit breaker: max loop iterations | no |
+| `MAX_WALL_TIME_S` | no | 120 | Circuit breaker: max wall time in seconds | no |
+| `MAX_SPEND_USD` | no | 1.00 | Circuit breaker: max USD per run | no |
+
+SECURITY.md table of contents:
+```
+## Threat model summary (3-5 domain-specific threats)
+## Attack surface analysis (inputs, tools, data flows)
+## Mitigation controls
+## Incident response (contain → assess → notify → recover)
+## Data classification (public / internal / confidential / restricted)
+## Compliance considerations (GDPR, SOC2, etc.)
+```
+
+SLO table (for deploy/monitoring.md):
+
+| Metric | Target | Alert threshold | Severity |
+|--------|--------|----------------|----------|
+| Availability | 99.5% | < 99% for 5 min | critical |
+| Latency p99 | < 30s | > 45s for 5 min | warning |
+| Error rate | < 2% | > 5% for 5 min | critical |
+| Cost/request | < $0.10 | > $0.50 | warning |
+
+State machine enum (for src/agent.py):
+```python
+class AgentState(enum.Enum):
+    IDLE = "idle"
+    PLANNING = "planning"
+    EXECUTING = "executing"
+    WAITING_TOOL = "waiting_tool"
+    ERROR = "error"
+    DONE = "done"
+```
+
 ## Phase 6: BUILD
 
 Produce implementation guidance or code **matching the chosen stack**, aligned with the canonical layout in `AGENT_SPEC.md` Section 2. Before coding:

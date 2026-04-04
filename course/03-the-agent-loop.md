@@ -148,6 +148,14 @@ For each agent type below, specify **at least three** termination conditions (mi
 
 ---
 
+### Empirical note: state machines in practice
+
+Autoresearch across 20 agents found that replacing stub loops with **real state machines** (typed enum states + transition tables + circuit breakers) was the second-largest single improvement, raising source code scores from 4.0 to 9.0 (+5.0). The canonical trio of circuit breakers — `max_steps`, `max_wall_time_s`, `max_spend_usd` — prevented the most common production failure: runaway agents consuming unlimited resources. Agents without state machines scored consistently lower because they could enter undefined states after tool errors.
+
+See [Factory Showcase LEARNINGS.md](https://github.com/akijain2000/factory-showcase/blob/main/grading/autoresearch-logs/LEARNINGS.md) for the full breakdown.
+
+---
+
 ## Further reading
 
 - [Agent loop (concept)](../wiki/concepts/agent-loop.md) — expanded treatment in this project’s wiki.  

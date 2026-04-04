@@ -128,6 +128,14 @@ Align with product needs: **compliance** may require **full logs** in external s
 
 ---
 
+### Empirical note: state machines as quality lever
+
+In autoresearch across 20 agents, **replacing stub code with explicit state machines** produced the second-largest single-dimension score improvement (+5.0 on source code quality). The pattern: `AgentState` as a typed enum (`IDLE`, `PLANNING`, `EXECUTING`, `WAITING_TOOL`, `ERROR`, `DONE`) with a frozen transition table that raises on invalid transitions. This makes agents provably unable to enter undefined states after tool errors, and enables checkpoint/resume via `save_state()`/`load_state()` JSON serialization.
+
+Using `LLMClient` as a `Protocol` (structural subtyping) rather than ABC made all 20 agents testable with simple mock objects.
+
+---
+
 ## Further reading
 
 - [State management (wiki)](../wiki/concepts/state-management.md)
