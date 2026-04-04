@@ -135,7 +135,7 @@ else {
 const costAware = /\b(cost|budget|token|expense|price|spending)\b/i.test(promptText);
 out("Cost awareness", costAware ? "Pass" : "Warn", costAware ? "cost/budget language found in prompt" : "no cost/budget awareness in system prompt (CLASSic)");
 
-const outputVal = /\b(verif|validat|check|confirm|assert)\b/i.test(promptText);
+const outputVal = /\b(verif|validat|check|confirm|assert)/i.test(promptText);
 out("Output validation", outputVal ? "Pass" : "Warn", outputVal ? "verification language found in prompt" : "no output verification cues in system prompt (CLASSic)");
 
 process.exit(hasFail ? 1 : 0);
