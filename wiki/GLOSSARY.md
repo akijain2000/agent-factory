@@ -6,7 +6,11 @@ Concise definitions for vocabulary used across agent design, runtime, and operat
 
 **Agent** -- An LLM-driven system that iterates: it plans actions, invokes tools or APIs, observes outcomes, and continues until a stop condition, rather than answering in a single forward pass.
 
+**AdaRubric** -- A task-adaptive evaluation framework (arXiv:2603.21362, 2026) that generates domain-specific rubrics for scoring LLM agent trajectories; uses a three-stage pipeline (Rubric Generator, Trajectory Evaluator, DimensionAwareFilter) achieving Pearson r=0.79 human correlation.
+
 **Agent Loop** -- The core control cycle (observe context, decide, act via tools, update state) that repeats until completion, failure, or an external halt; quality depends on bounds, recovery, and observability on each iteration.
+
+**Autoresearch** -- A self-improvement pattern (Karpathy, 2025-2026) where an LLM agent iteratively reads a living document (`program.md`), hypothesizes improvements, evaluates against an objective scorer, and keeps or discards changes autonomously within safety bounds.
 
 **Behavioral Test** -- A test that validates agent behavior end-to-end: given an input scenario and tool stubs, assert on the sequence of actions, final output, or side effects rather than internal implementation details.
 
@@ -17,6 +21,8 @@ Concise definitions for vocabulary used across agent design, runtime, and operat
 **Checkpointing** -- Persisting durable snapshots of conversation state, tool outputs, and decisions so a run can resume, audit, or roll back after crashes or human review.
 
 **Circuit Breaker** -- A pattern that stops calling a failing dependency (tool, API, model route) after thresholds are hit, failing fast instead of amplifying errors or cost.
+
+**CLASSic Framework** -- A five-dimensional operational evaluation framework (Zylos Research, 2026) measuring agent production-readiness across Cost, Latency, Accuracy, Stability, and Security; grounded in 2,100+ real enterprise messages across 7 industry domains.
 
 **Composability** -- Designing agents, tools, and sub-workflows as replaceable units with clear interfaces so you can assemble larger systems without rewriting core loops.
 
@@ -31,6 +37,8 @@ Concise definitions for vocabulary used across agent design, runtime, and operat
 **CrewAI** -- A Python-oriented framework for role-based **multi-agent** collaboration (crews, tasks, tools); one of several options compared in **framework** discussions.
 
 **Dead Letter Queue** -- A durable sink for tasks or tool jobs that failed beyond retry policy; enables inspection, replay, and alerting instead of silent loss.
+
+**DimensionAwareFilter** -- A component of the **AdaRubric** pipeline that prevents high scores on one evaluation dimension from masking failures on another; uses harmonic mean aggregation and flags any dimension below threshold for mandatory remediation.
 
 **Directed Graph** -- A workflow or state model where nodes are steps and edges are explicit transitions; contrasts with a free-form **agent loop** when you need guaranteed ordering.
 
@@ -86,6 +94,8 @@ Concise definitions for vocabulary used across agent design, runtime, and operat
 
 **Orchestrator** -- A component that schedules subtasks, selects agents or tools, and merges results; may be implemented as code, another LLM, or a hybrid.
 
+**Parallel Traces** -- Running N independent reasoning rollouts of the same task and aggregating results (majority vote, best-of-N, trace merge) to improve reliability at the cost of linear compute multiplication; distinct from Tree of Thoughts in that traces share no intermediate state.
+
 **Persona** -- The role, tone, and behavioral constraints encoded in the **system prompt** or policy layer so the model acts consistently for a use case.
 
 **Plan-Act-Observe-Reflect** -- A variant of the agent cycle emphasizing explicit planning, execution, observation of outcomes, and reflection before the next plan.
@@ -139,6 +149,8 @@ Concise definitions for vocabulary used across agent design, runtime, and operat
 **Tool Routing** -- Logic or model choice that picks which **tool** to invoke among alternatives, sometimes via classification or a planning pass.
 
 **Trace** -- An ordered record of spans (model calls, tool I/O, latencies) for one run; core to **observability** and regression **evaluation**.
+
+**Trace Aggregation** -- Merging results from **parallel traces** into a single output via voting, scoring, or structured merge; the aggregation strategy determines the quality-cost trade-off of parallel reasoning.
 
 **Tree of Thoughts** -- Search-like expansion of multiple reasoning branches scored or pruned before a final choice; higher cost than single **chain of thought**.
 

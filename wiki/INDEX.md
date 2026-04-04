@@ -44,7 +44,7 @@ This wiki is the structured reference layer for the Agent Factory: meta-skills a
 - [Agent Orchestration Platforms](concepts/agent-orchestration-platforms.md)
 - [Autonomous Loops](concepts/autonomous-loops.md)
 
-## Research (~20 articles)
+## Research (~23 articles + 3 raw data files)
 
 - [Anatomy of a Good Agent](research/anatomy-of-a-good-agent.md)
 - [Anti-Patterns](research/anti-patterns.md)
@@ -66,6 +66,15 @@ This wiki is the structured reference layer for the Agent Factory: meta-skills a
 - [Autoagent Harness Patterns](research/autoagent-harness-patterns.md)
 - [Context Memory Architecture](research/context-memory-architecture.md)
 - [Openclaw Scale Analysis](research/openclaw-scale-analysis.md)
+- [CLASSic Framework](research/classic-framework.md)
+- [AdaRubric Evaluation](research/adarubric-evaluation.md)
+- [Karpathy Autoresearch](research/karpathy-autoresearch.md)
+
+### Raw Research Data
+
+- [CLASSic Enterprise Data](research/raw/classic-enterprise-data.md)
+- [AdaRubric Results](research/raw/adarubric-results.md)
+- [Autoresearch 700 Experiments](research/raw/autoresearch-700-experiments.md)
 
 ## Examples
 

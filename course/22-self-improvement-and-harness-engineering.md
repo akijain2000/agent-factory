@@ -108,6 +108,74 @@ Compare **inner** agent freedom vs **outer** harness policy in each.
 
 ---
 
+## Karpathy autoresearch: the named pattern for LLM self-improvement
+
+The **autoresearch** pattern (Karpathy, 2025-2026) is a formalized version of score-driven hill-climbing where an LLM agent operates as both the researcher and the subject. Originally demonstrated on NanoGPT, where it ran 700 experiments in 2 days and achieved 11% training loss improvement.
+
+### Architecture
+
+```
+┌──────────────────────────────────────────────┐
+│                  program.md                   │
+│  (living document: goals, constraints,        │
+│   results log, current best configuration)    │
+└──────────────┬───────────────────────────────┘
+               │ reads
+               ▼
+┌──────────────────────────────────────────────┐
+│              LLM Agent (Claude/GPT)           │
+│  1. Read program.md + current state           │
+│  2. Generate hypothesis                       │
+│  3. Propose minimal edit (code or config)     │
+│  4. Execute change                            │
+└──────────────┬───────────────────────────────┘
+               │ runs
+               ▼
+┌──────────────────────────────────────────────┐
+│              train.py / evaluate.sh           │
+│  (objective scorer—loss, accuracy, pass rate) │
+└──────────────┬───────────────────────────────┘
+               │ returns scalar score
+               ▼
+┌──────────────────────────────────────────────┐
+│              Keep / Discard decision           │
+│  if score improved → commit, update program.md│
+│  if score regressed → revert, log failure     │
+└──────────────────────────────────────────────┘
+               │
+               └── loop back to step 1
+```
+
+### Key design principles
+
+1. **`program.md` as durable context** — survives context window limits; the agent reads it fresh each iteration
+2. **Objective scorer required** — no self-assessed "I think this is better"; only measurable metrics count
+3. **Minimal diffs** — each hypothesis changes one thing; avoids confounding
+4. **Automatic revert on regression** — failures are logged but never promoted
+5. **Bounded autonomy** — the loop runs unattended but within pre-set iteration limits and safety constraints
+
+### Adaptation beyond ML training
+
+The pattern generalizes to any domain with an objective function:
+
+| Domain | `program.md` | `train.py` (scorer) |
+|---|---|---|
+| ML training | Model config, hyperparameters | Training loss, validation accuracy |
+| Agent prompt engineering | System prompt + tool schemas | Task success rate on eval suite |
+| Code optimization | Codebase state, perf targets | Benchmark runtime, test pass rate |
+| Content generation | Style guide, topic constraints | Human preference model score |
+| Factory quality (this project) | AGENT_SPEC + SKILL_SPEC | Validator pass rate, manual grading scores |
+
+### Real-world results
+
+- **NanoGPT**: 700 experiments, 20 optimizations kept, 11% training loss improvement (2 days autonomous)
+- **Shopify** (production adaptation): 19% improvement in code generation quality
+- **Factory Showcase** (this project): 5-cycle Karpathy loop across 20 agents + 20 skills, mean agent quality +0.7 points, CLASSic coverage from 0% to 100%
+
+See [Karpathy autoresearch (wiki)](../wiki/research/karpathy-autoresearch.md) and the [original repo](https://github.com/karpathy/autoresearch).
+
+---
+
 ## Exercises
 
 1. **Design a learning loop for a coding agent**  
@@ -116,6 +184,9 @@ Compare **inner** agent freedom vs **outer** harness policy in each.
 2. **Build a score-driven evaluation harness**  
    Pick three small tasks (e.g., refactor, bugfix, docstring). Implement or pseudocode a script that runs the agent, scores outcomes with a simple rubric (0–2 per criterion), and writes results to JSON. Add a rule: only accept a new `program.md` if **held-out** task average does not drop. Document one way the agent could game your score and how you would patch the metric.
 
+3. **Karpathy loop simulation**  
+   Choose a simple task (e.g., optimizing a sorting function's performance). Write a `program.md` describing the goal. Run 5 manual iterations of the loop: read program.md → hypothesize → make a minimal change → measure (wall-clock time, correctness) → keep or discard. Log each iteration's hypothesis, result, and decision. What percentage of hypotheses were kept?
+
 ---
 
 ## Further reading
@@ -123,5 +194,6 @@ Compare **inner** agent freedom vs **outer** harness policy in each.
 - [Harness engineering (wiki)](../wiki/concepts/harness-engineering.md)
 - [Self-improving agents (wiki)](../wiki/concepts/self-improving-agents.md)
 - [AutoAgent harness patterns (wiki)](../wiki/research/autoagent-harness-patterns.md)
+- [Karpathy autoresearch (wiki)](../wiki/research/karpathy-autoresearch.md)
 - [AutoAgent harness loop (good example)](../wiki/examples/good/autoagent-harness-loop.md)
 - [Hermes self-improving (good example)](../wiki/examples/good/hermes-self-improving.md)

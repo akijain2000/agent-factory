@@ -115,7 +115,7 @@ agent-factory/
 │   │   ├── self-improving-agents.md
 │   │   ├── autonomous-loops.md
 │   │   └── ... (28 more)
-│   ├── research/                # 20 ecosystem analysis and deep-dive articles
+│   ├── research/                # 23 ecosystem analysis and deep-dive articles + 3 raw data files
 │   │   ├── hermes-agent-deep-dive.md
 │   │   ├── paperclip-orchestration-analysis.md
 │   │   ├── autoagent-harness-patterns.md
@@ -268,7 +268,7 @@ The [course/](course/) directory contains a 23-module curriculum organized in 6 
 | **Testing** | feedback-loops, agent-evaluation, agent-testing-patterns | Reflection, Reflexion, critic agents; behavioral tests; unit/integration/trace-based testing |
 | **Advanced** | harness-engineering, self-improving-agents, autonomous-loops | Meta-agent control structures; learning from experience; score-driven hill-climbing; self-modifying agents |
 
-### Research (20 deep dives)
+### Research (23 deep dives + 3 raw data files)
 
 | Article | What You Learn |
 |---------|----------------|
@@ -292,6 +292,9 @@ The [course/](course/) directory contains a 23-module curriculum organized in 6 
 | autoagent-harness-patterns | program.md as human interface, meta-agent hill-climbing, Docker isolation |
 | context-memory-architecture | ByteRover's context tree, knowledge storage, 96%+ LoCoMo accuracy |
 | openclaw-scale-analysis | Architecture of the 344K-star agent project: multi-channel, autonomous coding at scale |
+| classic-framework | CLASSic operational evaluation: Cost, Latency, Accuracy, Stability, Security across 2,100+ enterprise messages |
+| adarubric-evaluation | AdaRubric task-adaptive evaluation: 3-stage pipeline, Pearson r=0.79 human correlation, DPO training gains |
+| karpathy-autoresearch | Autoresearch self-improvement pattern: program.md + objective scorer, 700 experiments, 11% training loss improvement |
 
 ### Curated Examples (22 annotated)
 
@@ -356,6 +359,12 @@ Patterns and insights identified across the 40+ source repos:
 11. **Micro-Agents** -- Some agents are 20 lines of code. The LLM already knows HOW to do things -- it just needs the loop, tools, and guardrails. Don't over-engineer the first version. Source: OpenAI Swarm (educational), mattpocock/skills pattern.
 
 12. **Compliance Measurement** -- Don't hope your agent works, measure it. Generate behavioral specs, run scenarios, capture traces, classify adherence. AutoAgent takes this further with score-driven hill-climbing: the meta-agent modifies itself until benchmarks improve. Source: kevinrgu/autoagent.
+
+13. **CLASSic Framework for Operational Evaluation** -- The CLASSic framework (Zylos Research, 2026) evaluates agents across 5 production-readiness dimensions: Cost, Latency, Accuracy, Stability, Security. Grounded in 2,100+ enterprise messages across 7 industry domains. Key finding: agents that ace behavioral tests can score ≤3/10 on Cost, making them unshippable. Source: [wiki/research/classic-framework.md](wiki/research/classic-framework.md).
+
+14. **AdaRubric: Task-Adaptive Evaluation** -- Fixed rubrics fail because different agent domains need different quality dimensions. AdaRubric (arXiv:2603.21362) generates task-specific rubrics achieving Pearson r=0.79 human correlation. The DimensionAwareFilter prevents high aggregate scores from masking critical per-dimension failures. Source: [wiki/research/adarubric-evaluation.md](wiki/research/adarubric-evaluation.md).
+
+15. **Karpathy Autoresearch Pattern** -- The autoresearch pattern (Karpathy, 2025-2026) formalizes score-driven self-improvement: `program.md` + objective scorer + minimal diffs + automatic revert. 700 experiments in 2 days, 11% training loss improvement on NanoGPT. Generalizes beyond ML to prompt engineering, code optimization, and factory quality improvement. Source: [github.com/karpathy/autoresearch](https://github.com/karpathy/autoresearch), [wiki/research/karpathy-autoresearch.md](wiki/research/karpathy-autoresearch.md).
 
 ---
 
@@ -557,7 +566,9 @@ The wiki is the LLM's compiled knowledge -- not a static document, but a living 
 
 ---
 
-## Companion Project: Skill Factory
+## Companion Projects
+
+### Skill Factory
 
 **[Skill Factory](../skill-factory/)** is Agent Factory's sibling project. Together they cover the full stack of AI agent development:
 
@@ -567,6 +578,10 @@ The wiki is the LLM's compiled knowledge -- not a static document, but a living 
 | **Skill Factory** | The capability layer | Writing SKILL.md files that augment agents |
 
 Skills are markdown files loaded by agents at runtime. Agents are the autonomous systems that read and execute them. You need both: an agent without skills has limited capabilities, and skills without an agent have no runtime.
+
+### Factory Showcase
+
+**[Factory Showcase](https://github.com/akijain2000/factory-showcase)** is a testing companion with 20 agents and 20 skills created using both factories, then evaluated through a 5-cycle Karpathy autoresearch loop with CLASSic, AdaRubric, and parallel trace analysis. Contains grading reports, improvement findings, worked examples, and delta tracking across cycles.
 
 ---
 

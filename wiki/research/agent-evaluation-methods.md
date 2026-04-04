@@ -46,18 +46,50 @@ Online, sample tasks by **intent class** and **risk tier**—uniform random miss
 
 Maintain **injection**, **jailbreak**, and **tool-abuse** cases that evolve monthly. Tie red-team findings to **blocking** CI tests where feasible—otherwise regressions creep back with model updates.
 
+## CLASSic framework: operational evaluation
+
+The **CLASSic** framework (Zylos Research, 2026) adds five production-readiness dimensions—**Cost**, **Latency**, **Accuracy**, **Stability**, **Security**—grounded in 2,100+ enterprise messages across 7 industry domains. Unlike behavioral tests that measure "does it work," CLASSic measures "can it ship."
+
+Key insight from the framework: agents that pass all functional tests can still be unusable in production due to cost blowout (Cost ≤ 3/10) or instability under load (Stability ≤ 4/10). The correlation between behavioral correctness and operational readiness is moderate at best (r≈0.4).
+
+See the full deep dive: [CLASSic Framework](classic-framework.md).
+
+## AdaRubric: task-adaptive evaluation
+
+**AdaRubric** (arXiv:2603.21362, March 2026) generates domain-specific evaluation rubrics on-the-fly, solving the "one rubric fits none" problem. A three-stage pipeline (Rubric Generator → Trajectory Evaluator → DimensionAwareFilter) achieves Pearson r=0.79 human correlation and Krippendorff alpha=0.83 reliability.
+
+The DimensionAwareFilter prevents high aggregate scores from masking critical failures on individual dimensions—a common pitfall of arithmetic-mean rubrics. Using AdaRubric-scored trajectories as DPO training data produced +6.8 to +8.5 pp gains on standard benchmarks.
+
+See the full deep dive: [AdaRubric Evaluation](adarubric-evaluation.md).
+
+## Framework comparison for evaluation
+
+| Framework | Focus | Dimensions | When to use |
+|---|---|---|---|
+| AGENT_SPEC | Design quality | 8 architectural dimensions | During agent authoring |
+| CLASSic | Operational readiness | 5 (Cost, Latency, Accuracy, Stability, Security) | Before/after deployment |
+| AdaRubric | Behavioral quality | N task-adaptive dimensions | Per-task-type evaluation |
+| Behavioral tests | Functional correctness | Binary pass/fail | CI/CD regression |
+| LLM-as-judge | Subjective quality | Rubric-dependent | Ad hoc quality checks |
+
 ## Summary
 
-Robust evaluation **stacks** executable checks, trace analytics, calibrated judges, and risk-weighted sampling. Treat public benchmarks as **useful pressure** but not a substitute for domain fixtures.
+Robust evaluation **stacks** executable checks, trace analytics, calibrated judges, risk-weighted sampling, operational frameworks (CLASSic), and task-adaptive rubrics (AdaRubric). Treat public benchmarks as **useful pressure** but not a substitute for domain fixtures. Use multiple frameworks—no single methodology catches all failure modes.
 
 ## Sources and further reading
 
 - SWE-Bench and related software engineering agent benchmarks.
 - OpenAI and Anthropic documentation on evals and tracing.
 - Literature on LLM-as-judge limitations and debiasing.
+- Zylos Research (2026). "CLASSic: A Framework for Evaluating Enterprise AI Agents."
+- arXiv:2603.21362 (March 2026). "AdaRubric: Task-Adaptive Rubrics for Evaluating LLM Agents."
+- Karpathy, A. (2025). "autoresearch" — github.com/karpathy/autoresearch.
 
 ## See also
 
+- [CLASSic Framework](classic-framework.md)
+- [AdaRubric Evaluation](adarubric-evaluation.md)
+- [Karpathy Autoresearch](karpathy-autoresearch.md)
 - [Production case studies](production-case-studies.md)
 - [Cost analysis](cost-analysis.md)
 - [Anatomy of a good agent](anatomy-of-a-good-agent.md)

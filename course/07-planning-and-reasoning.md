@@ -105,7 +105,51 @@ This turns planning into a **first-class artifact** you can diff, review, and re
 
 ---
 
-## 6. When planning hurts
+## 6. Parallel reasoning traces
+
+Sometimes one reasoning path is not enough. **Parallel traces** run N independent rollouts of the same task and aggregate results—a stochastic ensemble for agent reasoning.
+
+### Architecture
+
+```
+Task Input
+   │
+   ├─── Trace A (model call, tool call sequence, answer)
+   ├─── Trace B (different reasoning path, same task)
+   ├─── Trace C ...
+   │
+   └─── Aggregator (vote / merge / best-of-N selection)
+             │
+          Final Output
+```
+
+### Strategies
+
+| Strategy | When to use | Trade-off |
+|---|---|---|
+| **Majority vote** | Deterministic answers (classification, Y/N) | Cheap aggregation, but ignores partial correctness |
+| **Best-of-N** with verifier | Code generation, structured output | Requires a reliable verifier/grader |
+| **Trace merge** | Complex plans where different traces discover different sub-plans | High complexity; risk of incoherent merges |
+| **Confidence-weighted** | When model logprobs are available | Not always exposed by APIs |
+
+### Cost-quality trade-offs
+
+Parallel traces **multiply inference cost linearly** with N. Practical guidance:
+
+- **N=3** is a common sweet spot for reliability gains (diminishing returns beyond 5)
+- Use a **cheap model** for exploration traces, **expensive model** for verification
+- **Short-circuit** when K of N traces agree early (saves remaining compute)
+- Track **trace diversity** (token-level Jaccard)—if all traces converge to the same path, parallelism adds cost without information
+
+### Relationship to Tree-of-Thought
+
+ToT explores branches **sequentially** with backtracking. Parallel traces explore **independently** with no shared state during execution. Parallel traces are simpler to implement (standard fan-out/fan-in) but cannot share intermediate discoveries across traces until aggregation.
+
+See the [parallel traces examples](../wiki/research/karpathy-autoresearch.md) and [factory-showcase worked examples](https://github.com/akijain2000/factory-showcase/tree/main/examples/parallel-traces).
+
+---
+
+## 7. When planning hurts
 
 **Over-planning**  
 The model spends thousands of tokens outlining work it could start immediately. Symptom: long plans with no tool calls. Fix: **step budgets**, “plan max 5 bullets,” or **interleaved** plan-update only after each milestone.
@@ -138,4 +182,4 @@ Every reasoning pass is billed. CoT/ToT should be **adaptive**, not default-on f
 
 ## Summary
 
-Planning is a **control strategy**, not a personality trait. CoT improves tool use quality; ToT helps under ambiguity; decomposition and `program.md`-style artifacts make long tasks **resumable**. Choose plan-then-execute when auditability matters, and stay ready to **replan** when reality diverges. Skip deep planning when the task is small or the environment is too volatile for static plans.
+Planning is a **control strategy**, not a personality trait. CoT improves tool use quality; ToT helps under ambiguity; decomposition and `program.md`-style artifacts make long tasks **resumable**. Parallel traces add **stochastic breadth** when a single reasoning path may miss the solution. Choose plan-then-execute when auditability matters, parallel traces when correctness outweighs cost, and stay ready to **replan** when reality diverges. Skip deep planning when the task is small or the environment is too volatile for static plans.

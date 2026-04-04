@@ -130,6 +130,38 @@ Guardrails for A/B:
 
 ---
 
+## CLASSic framework: operational evaluation beyond accuracy
+
+The **CLASSic** framework (2026) evaluates agents on five **production-readiness** dimensions that complement behavioral testing:
+
+- **Cost** — token consumption, model routing, budget circuit breakers, cost-per-outcome tracking
+- **Latency** — end-to-end response time, streaming, parallel execution, P99 targets
+- **Accuracy** — output validation, self-verification, confidence scoring, hallucination detection
+- **Stability** — retry logic, graceful degradation, consistent outputs, idempotent operations
+- **Security** — input sanitization, output filtering, least privilege, injection defense
+
+CLASSic fills a gap that pure behavioral tests miss: an agent can pass every functional test yet be unusable in production due to cost blowout or latency spikes. Score each dimension 0-10 using anchored rubrics (see [CLASSic framework research](../wiki/research/classic-framework.md)).
+
+**When to use CLASSic alongside AGENT_SPEC:** AGENT_SPEC's 8 dimensions measure *design quality*; CLASSic measures *operational readiness*. Use both. Top-scoring agents on AGENT_SPEC (architecture, prompt, tools) also tend to lead on CLASSic, but the correlation is imperfect—Memory-heavy agents often score well on AGENT_SPEC but poorly on Cost.
+
+---
+
+## AdaRubric: task-adaptive evaluation rubrics
+
+Fixed rubrics fail for agent evaluation because different task domains need different quality dimensions. A code-review agent needs "Coverage Completeness" and "Actionability"; a database admin needs "DDL Safety" and "Backup Discipline."
+
+**AdaRubric** (arXiv:2603.21362, March 2026) solves this with a three-stage pipeline:
+
+1. **Rubric Generator** — produces N orthogonal evaluation dimensions with calibrated 5-point scoring criteria from the task description
+2. **Trajectory Evaluator** — scores each agent step per-dimension with confidence-weighted feedback
+3. **DimensionAwareFilter** — prevents high scores on one dimension from masking failures on another
+
+Key results: Pearson r=0.79 human correlation (+0.16 over best static baseline), Krippendorff alpha=0.83 (deployment-grade reliability), and +6.8 to +8.5 pp task success when used for DPO training data.
+
+**Practical application:** Generate domain-specific rubrics before evaluating any new agent type. Two dimensions should always be included (Task Completion Fidelity, Failure Mode Coverage); the remaining 3-5 should be domain-specific. Flag any dimension scoring below 2/5 for immediate remediation regardless of aggregate score.
+
+---
+
 ## Exercises
 
 1. **Five behavioral test cases**  
@@ -138,6 +170,12 @@ Guardrails for A/B:
 2. **Trace analysis**  
    Take a provided (or anonymized) agent trace where the outcome was wrong. **Identify** the first turn where the trajectory diverged from a reasonable policy, cite **evidence** from tool inputs/outputs, and propose **one** harness or prompt change that would likely prevent recurrence.
 
+3. **CLASSic scoring**  
+   Pick one of the agents from the factory-showcase (e.g., `13-cost-optimizer` or `05-db-admin-agent`). Read its system-prompt.md, tools/, and tests/. Score it on all five CLASSic dimensions (0-10) with evidence citations. Identify the weakest dimension and propose one change to improve it.
+
+4. **AdaRubric generation**  
+   Given a task description ("database migration agent that plans, executes, and verifies schema changes"), generate 5 orthogonal evaluation dimensions with 5-point anchored scales. Score a hypothetical trace against your rubric.
+
 ---
 
 ## Further reading
@@ -145,3 +183,5 @@ Guardrails for A/B:
 - [Agent evaluation (wiki)](../wiki/concepts/agent-evaluation.md)
 - [Agent testing patterns (wiki)](../wiki/concepts/agent-testing-patterns.md)
 - [Agent evaluation methods (wiki)](../wiki/research/agent-evaluation-methods.md)
+- [CLASSic framework (wiki)](../wiki/research/classic-framework.md)
+- [AdaRubric evaluation (wiki)](../wiki/research/adarubric-evaluation.md)

@@ -33,12 +33,25 @@ Define **per-request**, **per-user**, and **per-org** limits. Expose remaining b
 
 Include **locale**, **model version**, and **tool schema hash** in cache keys when outputs might change. Invalidate on **knowledge base** updates if cached answers embed facts. For LLM response caches, respect **data use** policies—some contracts forbid caching certain inputs.
 
+## Parallel traces and cost
+
+**Parallel traces** (running N independent reasoning rollouts and aggregating) multiply inference cost linearly with N. A 3-trace ensemble costs 3x a single pass. Cost-aware design:
+
+- Start with N=3; diminishing returns beyond N=5 for most tasks
+- Use a **cheap model** for exploration traces and an **expensive model** only for the final verification pass
+- **Short-circuit** when K of N traces agree early to save remaining compute
+- Track **cost-per-correct-answer** rather than raw model cost—parallel traces often improve accuracy enough to justify the multiplier
+- The **CLASSic framework** Cost dimension specifically evaluates whether agents account for compute multiplication in planning
+
+See [CLASSic framework](../research/classic-framework.md) for the full Cost dimension scoring anchors.
+
 ## Common mistakes
 
 - Caching responses that embed user-specific PII without tenant-scoped keys.
 - Aggressive summarization that drops safety constraints or tool rules.
 - Optimizing average cost while tail latency or failure rate spikes.
 - No kill switch when upstream pricing or usage anomalies occur.
+- Running parallel traces at high N without measuring cost-per-correct-answer improvement.
 
 ## Quick checklist
 
@@ -63,3 +76,5 @@ Full curriculum index: [`../../course/README.md`](../../course/README.md) (when 
 - [Context Engineering](context-engineering.md)
 - [Agent Evaluation](agent-evaluation.md)
 - [Progressive Complexity](progressive-complexity.md)
+- [CLASSic Framework](../research/classic-framework.md)
+- [Cost Analysis](../research/cost-analysis.md)
