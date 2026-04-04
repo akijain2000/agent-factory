@@ -581,7 +581,7 @@ Skills are markdown files loaded by agents at runtime. Agents are the autonomous
 
 ### Factory Showcase
 
-**[Factory Showcase](https://github.com/akijain2000/factory-showcase)** is a testing companion with 20 agents and 20 skills created using both factories, then evaluated through a 5-cycle Karpathy autoresearch loop with CLASSic, AdaRubric, and parallel trace analysis. Contains grading reports, improvement findings, worked examples, and delta tracking across cycles.
+**[Factory Showcase](https://github.com/akijain2000/factory-showcase)** is a testing companion with 20 agents and 20 skills created using both factories, then evaluated through a 5-cycle Karpathy loop + 7-wave autoresearch improvement loop (~100 iterations). Final scores: AGENT_SPEC mean 9.04/10, CLASSic mean 9.02/10. Contains grading reports, per-wave learning logs documenting what increases and decreases agent scores, and a comprehensive [LEARNINGS.md](https://github.com/akijain2000/factory-showcase/blob/main/grading/autoresearch-logs/LEARNINGS.md) that distills the empirical findings for anyone building agents.
 
 ---
 

@@ -170,7 +170,7 @@ The pattern generalizes to any domain with an objective function:
 
 - **NanoGPT**: 700 experiments, 20 optimizations kept, 11% training loss improvement (2 days autonomous)
 - **Shopify** (production adaptation): 19% improvement in code generation quality
-- **Factory Showcase** (this project): 5-cycle Karpathy loop across 20 agents + 20 skills, mean agent quality +0.7 points, CLASSic coverage from 0% to 100%
+- **Factory Showcase** (this project): 5-cycle Karpathy loop + 7-wave autoresearch across 20 agents + 20 skills. AGENT_SPEC mean: 7.6 → 9.04 (+1.44). CLASSic mean: 5.5 → 9.02 (+3.52). ~100 iterations total. Key finding: observability was the biggest single-wave improvement (+9.0 from zero)
 
 See [Karpathy autoresearch (wiki)](../wiki/research/karpathy-autoresearch.md) and the [original repo](https://github.com/karpathy/autoresearch).
 

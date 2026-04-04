@@ -178,6 +178,35 @@ Key results: Pearson r=0.79 human correlation (+0.16 over best static baseline),
 
 ---
 
+## Empirical findings: What increases and decreases agent scores
+
+Based on autoresearch across 20 agents (~100 iterations), here are the most impactful findings:
+
+**What increases scores the most (ranked by impact):**
+
+1. Adding observability from zero (SLOs, tracing, monitoring) -- single biggest dimension gain (+9.0)
+2. Replacing stub code with real state machines and circuit breakers (+5.0)
+3. Expanding from 1 test to 4 test types (happy path, error recovery, adversarial, regression) (+4.0)
+4. Adding SECURITY.md with domain-specific threat models (+4.0)
+5. Error taxonomy with retryable flags on every tool (+3.0)
+6. Architecture diagrams and environment variable matrices in README (+3.0)
+7. System prompt refusal paths, HITL gates, and memory strategy (+2.5)
+
+**What decreases scores (anti-patterns):**
+
+1. NotImplementedError stubs in source code (instant 0/10 on code dimension)
+2. Happy-path-only testing (no evidence of failure handling)
+3. Copy-paste sections across agents (detected as "template slop")
+4. Missing error taxonomy on tools (agents can't distinguish retryable vs fatal)
+5. No circuit breakers (agents run forever on bad inputs)
+6. Generic SLOs applied to all agents (shows no domain understanding)
+
+**Universal principle:** Domain specificity always beats generics. A file organizer with path traversal threat modeling scores higher than one with generic "security is important."
+
+See the [Factory Showcase autoresearch logs](https://github.com/akijain2000/factory-showcase/tree/main/grading/autoresearch-logs) for per-wave detailed breakdowns.
+
+---
+
 ## Further reading
 
 - [Agent evaluation (wiki)](../wiki/concepts/agent-evaluation.md)
@@ -185,3 +214,4 @@ Key results: Pearson r=0.79 human correlation (+0.16 over best static baseline),
 - [Agent evaluation methods (wiki)](../wiki/research/agent-evaluation-methods.md)
 - [CLASSic framework (wiki)](../wiki/research/classic-framework.md)
 - [AdaRubric evaluation (wiki)](../wiki/research/adarubric-evaluation.md)
+- [Factory Showcase LEARNINGS.md](https://github.com/akijain2000/factory-showcase/blob/main/grading/autoresearch-logs/LEARNINGS.md)

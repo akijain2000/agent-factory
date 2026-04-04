@@ -86,6 +86,13 @@ For **structured outputs** from the model (if any), read the file: `wiki/concept
 
 Label each artifact with **version** or **date** in a comment header so prompt and schema drift is traceable later.
 
+**Autoresearch-validated checklist for 9/10 design quality** (from 100-iteration loop across 20 agents):
+
+- System prompt has: version/changelog, explicit refusal paths, memory strategy (ephemeral vs durable), abstain rules (when NOT to call tools), structured output format, cost awareness, HITL gates with timeout behavior
+- Each tool has: error taxonomy with retryable flags, per-tool timeouts, idempotency keys for mutating tools, pagination for list tools
+- Error handling covers: retryable vs fatal dispatch, circuit breakers (max_steps, max_wall_time_s, max_spend_usd), escalation when circuit trips
+- Memory strategy distinguishes: ephemeral (session), durable (persistent), retention policy, redaction rules for PII/secrets, schema migration plan
+
 ## Phase 6: BUILD
 
 Produce implementation guidance or code **matching the chosen stack**, aligned with the canonical layout in `AGENT_SPEC.md` Section 2. Before coding:
@@ -118,9 +125,21 @@ Run the **required-files** and structural checklist from Section 4 mentally (or 
 
 Present scores in a **markdown table** with columns: Dimension | Score | Evidence | Spec reference (section or subsection). If the project is pre-code, score the **design** and mark cells as “N/A implementation” where appropriate.
 
+**What drives scores to 9/10** (empirical findings from autoresearch on 20 agents):
+
+- **Source code (highest impact)**: State machine with explicit enum + transition table, circuit breakers, LLMClient as Protocol
+- **Observability**: SLOs with numerical targets (p99 latency, error rate), tracing with span context, cost tracking per request
+- **Testing**: 4 test types minimum (happy path, error recovery, adversarial, regression), structured format with tool mock alignment
+- **Safety**: SECURITY.md with domain-specific threat model, HITL gates with timeout, data classification tables
+- **Tool design**: Error taxonomy with retryable flags, idempotency for mutating tools, pagination for list tools
+- **Documentation**: Mermaid architecture diagrams, complete env matrix, honest domain-specific limitations
+- **Anti-patterns that kill scores**: NotImplementedError stubs, happy-path-only tests, copy-paste sections across agents, no circuit breakers
+
+See the [Factory Showcase LEARNINGS.md](https://github.com/akijain2000/factory-showcase/blob/main/grading/autoresearch-logs/LEARNINGS.md) for the full ranked breakdown.
+
 ## Phase 8: TEST PLAN
 
-Produce **three** concrete scenarios with expected traces or assertions:
+Produce **four** concrete scenarios with expected traces or assertions (expanded from three based on autoresearch findings):
 
 1. **Activation test**: cold start, config load, model + tool registration, first user message—does the agent start and respond without error?
 2. **Workflow test**: the **primary** happy-path task end-to-end, including at least one successful tool call and a clear stop condition.
@@ -130,7 +149,9 @@ For each scenario, specify: **input**, **expected behavior**, **tools involved**
 
 Add **acceptance criteria** in plain language (e.g. “must not call destructive tool without confirmation”) and, when useful, a **golden trace** outline: user message, model thought summary, tool calls, final answer. If safety matters, include a **red-team** style prompt the agent should refuse or downgrade.
 
-Optionally add a fourth **regression** scenario tied to a known bug or incident pattern the user described in Phase 2.
+4. **Adversarial test**: prompt injection attempt, malformed input, or privilege escalation—does the agent refuse, sanitize, or escalate correctly? Include at least one injection scenario and one data exfiltration attempt.
+
+Optionally add a fifth **regression** scenario tied to a known bug or incident pattern the user described in Phase 2.
 
 ## Instructions for the LLM
 
