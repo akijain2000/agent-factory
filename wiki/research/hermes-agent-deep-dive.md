@@ -1,3 +1,8 @@
+---
+category: research
+tags: [hermes, self-improving, learning-loop]
+---
+
 # Hermes: Skills from Experience, Multi-Platform Agents
 
 Hermes-family architectures (as described in public materials and community writeups) emphasize **learning from use**: converting recurring interactions into **skills** or procedures that tighten future loops. This note analyzes the pattern stack—**self-improvement during use**, **persistent knowledge**, **multi-channel surfaces**, and **provider fallback chains**—as transferable engineering lessons.

@@ -1,0 +1,66 @@
+{
+  "metadata": {
+    "date": "2026-04-04",
+    "method": "7-wave Karpathy autoresearch loop (~100 iterations)",
+    "source": "factory-showcase/grading/autoresearch-final.md",
+    "agent_spec_mean": 9.04,
+    "classic_mean": 9.02
+  },
+  "dimensions": {
+    "agent_spec": ["SRC", "SYS", "TOOL", "SAFE", "MEM", "TEST", "OBS", "DOC"],
+    "classic": ["Cost", "Latency", "Accuracy", "Stability", "Security"]
+  },
+  "agents": [
+    {"id": "01-file-organizer", "agent_spec": [9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.5], "classic": [9.0, 9.0, 9.0, 9.0, 9.0], "agent_spec_mean": 9.1, "classic_mean": 9.0},
+    {"id": "02-research-assistant", "agent_spec": [9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0], "classic": [9.0, 8.5, 9.0, 9.0, 9.0], "agent_spec_mean": 9.0, "classic_mean": 8.9},
+    {"id": "03-code-review-agent", "agent_spec": [9.5, 9.0, 9.5, 9.0, 9.0, 9.0, 9.0, 9.0], "classic": [9.0, 9.0, 9.5, 9.0, 9.5], "agent_spec_mean": 9.1, "classic_mean": 9.2},
+    {"id": "04-migration-planner", "agent_spec": [9.5, 9.0, 9.0, 9.5, 9.0, 9.0, 9.0, 9.0], "classic": [9.0, 8.5, 9.0, 9.0, 9.5], "agent_spec_mean": 9.1, "classic_mean": 9.0},
+    {"id": "05-db-admin-agent", "agent_spec": [9.5, 9.5, 9.0, 9.5, 9.0, 9.0, 9.0, 9.0], "classic": [9.0, 9.0, 9.0, 9.0, 9.5], "agent_spec_mean": 9.2, "classic_mean": 9.1},
+    {"id": "06-learning-tutor", "agent_spec": [9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0], "classic": [9.0, 9.0, 9.0, 9.0, 9.0], "agent_spec_mean": 9.0, "classic_mean": 9.0},
+    {"id": "07-incident-responder", "agent_spec": [9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0], "classic": [9.0, 9.5, 9.0, 9.0, 9.0], "agent_spec_mean": 9.0, "classic_mean": 9.1},
+    {"id": "08-api-test-generator", "agent_spec": [9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0], "classic": [9.0, 8.5, 9.0, 9.0, 9.0], "agent_spec_mean": 9.0, "classic_mean": 8.9},
+    {"id": "09-docs-maintainer", "agent_spec": [9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0], "classic": [9.0, 9.0, 9.0, 9.0, 9.0], "agent_spec_mean": 9.0, "classic_mean": 9.0},
+    {"id": "10-support-triage", "agent_spec": [9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0], "classic": [9.0, 9.5, 9.0, 9.0, 9.0], "agent_spec_mean": 9.0, "classic_mean": 9.1},
+    {"id": "11-context-engineer", "agent_spec": [9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0], "classic": [9.0, 9.0, 9.0, 9.0, 9.0], "agent_spec_mean": 9.0, "classic_mean": 9.0},
+    {"id": "12-streaming-pipeline", "agent_spec": [9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0], "classic": [9.0, 9.0, 9.0, 9.0, 9.0], "agent_spec_mean": 9.0, "classic_mean": 9.0},
+    {"id": "13-cost-optimizer", "agent_spec": [9.5, 9.5, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0], "classic": [9.5, 9.0, 9.0, 9.0, 9.0], "agent_spec_mean": 9.1, "classic_mean": 9.1},
+    {"id": "14-self-improver", "agent_spec": [9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0], "classic": [9.0, 9.0, 9.0, 9.0, 9.0], "agent_spec_mean": 9.0, "classic_mean": 9.0},
+    {"id": "15-a2a-coordinator", "agent_spec": [9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0], "classic": [9.0, 9.0, 9.0, 9.0, 9.0], "agent_spec_mean": 9.0, "classic_mean": 9.0},
+    {"id": "16-parallel-executor", "agent_spec": [9.5, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0], "classic": [9.0, 9.0, 9.0, 9.0, 9.0], "agent_spec_mean": 9.1, "classic_mean": 9.0},
+    {"id": "17-eval-agent", "agent_spec": [9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0], "classic": [9.0, 9.0, 9.0, 9.0, 9.0], "agent_spec_mean": 9.0, "classic_mean": 9.0},
+    {"id": "18-security-hardened", "agent_spec": [9.0, 9.5, 9.0, 9.5, 9.0, 9.0, 9.0, 9.0], "classic": [9.0, 9.0, 9.0, 9.0, 9.5], "agent_spec_mean": 9.1, "classic_mean": 9.1},
+    {"id": "19-workflow-orchestrator", "agent_spec": [9.5, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0], "classic": [9.0, 9.0, 9.0, 9.0, 9.0], "agent_spec_mean": 9.1, "classic_mean": 9.0},
+    {"id": "20-knowledge-graph", "agent_spec": [9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0], "classic": [9.0, 9.0, 9.0, 9.0, 9.0], "agent_spec_mean": 9.0, "classic_mean": 9.0}
+  ],
+  "wave_improvements": [
+    {"wave": 1, "dimension": "System Prompts", "before": 6.5, "after": 9.0, "delta": 2.5, "key_insight": "Refusal paths + memory strategy = biggest prompt quality signal"},
+    {"wave": 2, "dimension": "Tool Design", "before": 6.0, "after": 9.0, "delta": 3.0, "key_insight": "Error taxonomy with retryable flags = most impactful tool addition"},
+    {"wave": 3, "dimension": "Source Code", "before": 4.0, "after": 9.0, "delta": 5.0, "key_insight": "State machine + circuit breakers = largest single score jump"},
+    {"wave": 4, "dimension": "Testing", "before": 5.0, "after": 9.0, "delta": 4.0, "key_insight": "Error recovery + adversarial tests = essential production coverage"},
+    {"wave": 5, "dimension": "Observability", "before": 0.0, "after": 9.0, "delta": 9.0, "key_insight": "SLOs + tracing = from zero to production-ready"},
+    {"wave": 6, "dimension": "Documentation", "before": 6.0, "after": 9.0, "delta": 3.0, "key_insight": "Mermaid diagrams + env matrix = documentation quality leap"},
+    {"wave": 7, "dimension": "Safety + Memory", "before": 5.0, "after": 9.0, "delta": 4.0, "key_insight": "SECURITY.md + HITL gates = production safety baseline"}
+  ],
+  "progression": [
+    {"id": "01-file-organizer", "cycle1": null, "cycle5": 8.3, "final": 9.1},
+    {"id": "02-research-assistant", "cycle1": null, "cycle5": 7.9, "final": 9.0},
+    {"id": "03-code-review-agent", "cycle1": null, "cycle5": 8.2, "final": 9.1},
+    {"id": "04-migration-planner", "cycle1": null, "cycle5": 8.1, "final": 9.1},
+    {"id": "05-db-admin-agent", "cycle1": null, "cycle5": 8.0, "final": 9.2},
+    {"id": "06-learning-tutor", "cycle1": null, "cycle5": 7.8, "final": 9.0},
+    {"id": "07-incident-responder", "cycle1": null, "cycle5": 7.5, "final": 9.0},
+    {"id": "08-api-test-generator", "cycle1": null, "cycle5": 7.6, "final": 9.0},
+    {"id": "09-docs-maintainer", "cycle1": null, "cycle5": 7.7, "final": 9.0},
+    {"id": "10-support-triage", "cycle1": null, "cycle5": 7.9, "final": 9.0},
+    {"id": "11-context-engineer", "cycle1": null, "cycle5": 7.5, "final": 9.0},
+    {"id": "12-streaming-pipeline", "cycle1": null, "cycle5": 7.4, "final": 9.0},
+    {"id": "13-cost-optimizer", "cycle1": null, "cycle5": 7.8, "final": 9.1},
+    {"id": "14-self-improver", "cycle1": null, "cycle5": 7.6, "final": 9.0},
+    {"id": "15-a2a-coordinator", "cycle1": null, "cycle5": 7.5, "final": 9.0},
+    {"id": "16-parallel-executor", "cycle1": null, "cycle5": 7.4, "final": 9.1},
+    {"id": "17-eval-agent", "cycle1": null, "cycle5": 7.5, "final": 9.0},
+    {"id": "18-security-hardened", "cycle1": null, "cycle5": 7.6, "final": 9.1},
+    {"id": "19-workflow-orchestrator", "cycle1": null, "cycle5": 7.5, "final": 9.1},
+    {"id": "20-knowledge-graph", "cycle1": null, "cycle5": 7.2, "final": 9.0}
+  ]
+}

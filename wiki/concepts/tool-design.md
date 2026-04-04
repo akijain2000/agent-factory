@@ -1,3 +1,8 @@
+---
+category: concepts
+tags: [tools, function-calling, schemas]
+---
+
 # Tool Design
 
 ## What it is

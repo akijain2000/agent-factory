@@ -1,3 +1,8 @@
+---
+category: example-good
+tags: [mcp, tool-server, protocol]
+---
+
 # MCP Tool Server: Protocol-First Tooling
 
 ## Summary

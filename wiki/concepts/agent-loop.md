@@ -1,3 +1,8 @@
+---
+category: concepts
+tags: [agent-loop, orchestration, plan-act-observe]
+---
+
 # Agent Loop
 
 ## What it is

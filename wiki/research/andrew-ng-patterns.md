@@ -1,3 +1,8 @@
+---
+category: research
+tags: [andrew-ng, agentic-patterns, reflection]
+---
+
 # Andrew Ng’s Agentic Design Patterns
 
 Andrew Ng’s widely cited framing organizes “agentic” behavior into **four patterns**: reflection, tool use, planning, and multi-agent collaboration. The value is pedagogical clarity—each pattern maps to **different engineering surfaces** (prompt structure, runtime, orchestration graph). Below: what each pattern optimizes, failure modes, and minimal implementation sketches.

@@ -1,0 +1,25 @@
+/* Wiki-style CSS for Agent Factory vault */
+
+/* Wider tables */
+table {
+  width: 100%;
+}
+
+/* Code blocks: slightly smaller for readability in wiki articles */
+.markdown-preview-view pre {
+  font-size: 0.85em;
+  line-height: 1.5;
+}
+
+/* Tag pills */
+.tag {
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 0.85em;
+}
+
+/* Mermaid diagrams: constrain width */
+.mermaid {
+  max-width: 800px;
+  margin: 0 auto;
+}

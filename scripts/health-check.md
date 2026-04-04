@@ -22,6 +22,26 @@ Use this runbook to audit the Agent Factory wiki for quality, consistency, and s
 
 6. **Glossary alignment.** Spot high-frequency terms in new articles that are missing from `wiki/GLOSSARY.md` or INDEX anchors. Propose additions in glossary style (short definition, see-also).
 
+7. **Find inconsistencies.** Compare factual claims across articles. Flag cases where article A says one thing and article B contradicts it (e.g., different circuit breaker defaults, conflicting framework recommendations, incompatible scoring anchors). For each inconsistency, identify the authoritative source (AGENT_SPEC.md, course module, or primary research article) and recommend which to keep.
+
+8. **Impute missing data.** Identify articles with placeholder text, TODO markers, or empty sections (heading followed immediately by another heading). For each gap, suggest content from related wiki articles, course modules, or raw sources that could fill it. Flag with priority: high (blocks understanding), medium (reduces quality), low (cosmetic).
+
+9. **Suggest new articles.** Analyze course modules and raw/docs/SOURCES.md for topics frequently referenced but not yet covered by a dedicated wiki article. Check for patterns mentioned in 3+ course modules without a concepts/ article. Output as a ranked list with proposed title, suggested category (concepts/research/examples), and source material pointers.
+
+10. **Find connections.** For each wiki article, identify the 3-5 most semantically related articles that are NOT currently linked. Use topic overlap, shared terminology, and complementary coverage to rank suggestions. Output as a list of recommended cross-links: `[source] → [target]: [reason]`. This builds the web of knowledge that makes the wiki navigable beyond INDEX.md.
+
+## CLI pre-checks
+
+Before starting the LLM-powered checks above, run these automated tools:
+
+```bash
+bun scripts/check-links.ts wiki/ course/    # broken internal links
+bun scripts/wiki-stats.ts wiki/             # article count, word count, orphans
+bun scripts/search-wiki.ts "TODO" --path wiki/  # find TODOs and placeholders
+```
+
+Include their output in the health check report.
+
 ## Output format
 
 Emit a table per area: **Check** | **Pass/Warn/Fail** | **Notes** | **Suggested action**.

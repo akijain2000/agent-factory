@@ -1,3 +1,8 @@
+---
+category: concepts
+tags: [errors, retries, circuit-breakers]
+---
+
 # Error Recovery
 
 ## What it is

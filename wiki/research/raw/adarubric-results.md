@@ -1,3 +1,8 @@
+---
+category: research-data
+tags: [adarubric, evaluation, benchmarks]
+---
+
 # AdaRubric: Raw Evaluation Results
 
 > Source: arXiv:2603.21362 (March 2026). "AdaRubric: Task-Adaptive Rubrics for Evaluating LLM Agents"

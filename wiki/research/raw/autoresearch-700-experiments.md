@@ -1,3 +1,8 @@
+---
+category: research-data
+tags: [autoresearch, karpathy, experiments]
+---
+
 # Karpathy Autoresearch: Raw Experiment Data
 
 > Source: [github.com/karpathy/autoresearch](https://github.com/karpathy/autoresearch) (2025-2026)

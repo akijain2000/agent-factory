@@ -1,3 +1,8 @@
+---
+category: concepts
+tags: [planning, decomposition, task-breakdown]
+---
+
 # Planning Strategies
 
 ## What it is

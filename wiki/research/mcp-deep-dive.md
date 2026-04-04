@@ -1,3 +1,8 @@
+---
+category: research
+tags: [mcp, protocol, tool-integration]
+---
+
 # Model Context Protocol (MCP): Architecture Deep Dive
 
 MCP standardizes how **hosts** (IDEs, agents, chat clients) connect to **servers** that expose **tools**, **resources**, and optional **sampling** primitives. It is an integration layer—not a replacement for your orchestration graph, but a way to shrink bespoke adapter code per product.

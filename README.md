@@ -4,37 +4,74 @@
 
 Built on [Karpathy's LLM-KB pattern](https://x.com/karpathy/status/1909366683415642209): raw sources are collected from 40+ repositories and 25 reference documents, LLM-compiled into a structured wiki of 80+ articles, then queried by meta-skills to produce better agents. Sibling project to [Skill Factory](../skill-factory/), which teaches how to write the SKILL.md files that augment these agents.
 
-```
-            ┌──────────────────────────────────────────────────┐
-            │          RAW SOURCES (40+ repos, 25 docs)        │
-            │  Hermes, Paperclip, AutoAgent, ByteRover,        │
-            │  LangGraph, CrewAI, OpenAI SDK, gstack, ...      │
-            │  + papers (Weng, Yao, Shinn) + guides (Anthropic,│
-            │    OpenAI, Ng) + protocol specs (MCP, A2A)       │
-            └───────────────────────┬──────────────────────────┘
-                                    │
-                         compile-wiki.md (LLM)
-                                    │
-                                    ▼
-            ┌──────────────────────────────────────────────────┐
-            │           COMPILED WIKI (80+ articles)           │
-            │  35 concepts · 20 research · 22 examples         │
-            │  INDEX.md · GLOSSARY.md (67 terms) · query logs  │
-            └───────────────────────┬──────────────────────────┘
-                                    │
-               authoring + agent-maker + prompt-decomposer
-                                    │
-                                    ▼
-            ┌──────────────────────────────────────────────────┐
-            │          NEW AGENTS (higher quality)             │
-            │  Spec-validated · Production-ready · Tested      │
-            │  Scored across 8 AGENT_SPEC dimensions           │
-            └───────────────────────┬──────────────────────────┘
-                                    │
-                         health-check.md (audit loop)
-                                    │
-                                    ▼
-                             Wiki improves ↺
+```mermaid
+flowchart TD
+    subgraph ingest ["DATA INGEST"]
+        Articles["Articles"]
+        Papers["Papers"]
+        Repos["Repos"]
+        Datasets["Datasets"]
+        Images["Images"]
+        ClipArticle["clip-article.md"]
+    end
+
+    subgraph rawStore ["raw/"]
+        RawDocs["docs/SOURCES.md"]
+        RawRepos["repos/SOURCES.md"]
+        RawDatasets["datasets/ JSON+CSV"]
+        RawImages["images/"]
+    end
+
+    subgraph extraTools ["EXTRA TOOLS"]
+        SearchWiki["search-wiki.ts"]
+        WikiStats["wiki-stats.ts"]
+        CheckLinks["check-links.ts"]
+        ValidateAgent["validate-agent.ts"]
+    end
+
+    subgraph llmEngine ["LLM ENGINE"]
+        Compile["compile-wiki.md"]
+        QA["research-qa.md"]
+        Linting["health-check.md"]
+        Indexing["build-index.md"]
+    end
+
+    subgraph wikiStore ["KNOWLEDGE STORE"]
+        Wiki["Wiki .md\n85+ articles\n35 concepts\n26 research\n22 examples\nINDEX + GLOSSARY\nBACKLINKS"]
+    end
+
+    subgraph outputs ["OUTPUTS"]
+        Markdown["Markdown articles"]
+        Slides["Marp slides"]
+        Charts["Matplotlib charts"]
+    end
+
+    subgraph ide ["IDE FRONTEND"]
+        Obsidian["Obsidian vault\nGraph view\nSearch\nSlide preview"]
+    end
+
+    subgraph futureBlock ["FUTURE EXPLORATIONS"]
+        SyntheticData["Synthetic data gen\n+ finetuning"]
+        ProductVision["Product vision\nWeb UI + API"]
+    end
+
+    Articles & Papers & Repos & Datasets & Images --> rawStore
+    ClipArticle --> rawStore
+    rawStore --> Compile
+    rawStore --> QA
+    rawStore --> Linting
+    rawStore --> Indexing
+    Compile --> Wiki
+    QA --> Wiki
+    Linting --> Wiki
+    Indexing --> Wiki
+    extraTools --> Wiki
+    Wiki --> Markdown
+    Wiki --> Slides
+    Wiki --> Charts
+    Charts -->|"filed back"| Wiki
+    rawStore & Wiki & Slides & Charts --> Obsidian
+    Wiki -.-> futureBlock
 ```
 
 ---
@@ -128,18 +165,51 @@ agent-factory/
 │   │   └── bad/                 # 8 anti-pattern agents with analysis
 │   └── queries/                 # Filed Q&A and update logs
 │
-├── scripts/                     # Automation
-│   ├── validate-agent.ts        # Automated agent project linter (Bun/Node)
-│   ├── compile-wiki.md          # LLM instructions: compile raw/ into wiki/
-│   ├── health-check.md          # LLM instructions: audit wiki quality
-│   ├── update-sources.md        # LLM instructions: monthly discovery + update
+├── scripts/                     # Automation & CLI tools
+│   ├── validate-agent.ts        # Agent project linter (Bun/Node)
+│   ├── search-wiki.ts           # Full-text wiki search CLI
+│   ├── wiki-stats.ts            # Article count, word count, orphan detection
+│   ├── check-links.ts           # Internal link validator
+│   ├── compile-wiki.md          # LLM runbook: compile raw/ into wiki/
+│   ├── health-check.md          # LLM runbook: audit wiki quality (10 checks)
+│   ├── research-qa.md           # LLM runbook: wiki-grounded Q&A engine
+│   ├── build-index.md           # LLM runbook: regenerate indexes + backlinks
+│   ├── clip-article.md          # LLM runbook: web clipper for new sources
+│   ├── update-sources.md        # LLM runbook: monthly discovery + update
 │   └── discovery-keywords.txt   # Keywords for finding new agent repos
 │
-└── raw/                         # Source material
-    ├── docs/
-    │   └── SOURCES.md           # 25 reference documents (URLs + summaries)
-    └── repos/
-        └── SOURCES.md           # 40+ repo manifest with tiers and descriptions
+├── raw/                         # Source material (data ingest)
+│   ├── docs/
+│   │   └── SOURCES.md           # 25 reference documents (URLs + summaries)
+│   ├── repos/
+│   │   └── SOURCES.md           # 40+ repo manifest with tiers and descriptions
+│   ├── datasets/                # Structured data (JSON, CSV)
+│   │   ├── SOURCES.md           # Dataset manifest
+│   │   ├── autoresearch-scores.json  # 20 agents x 13 dimensions
+│   │   ├── wave-improvements.csv     # 7 waves with before/after/delta
+│   │   └── agent-progression.csv     # Score progression per agent
+│   └── images/                  # Architecture diagrams and visual references
+│
+├── outputs/                     # Generated artifacts
+│   ├── slides/                  # Marp-format presentation decks
+│   │   ├── agent-quality-overview.md  # What makes a 9/10 agent
+│   │   ├── course-summary.md          # 23 modules in 6 blocks
+│   │   └── autoresearch-results.md    # 7 waves, 20 agents, 100 iterations
+│   └── charts/                  # Generated visualizations
+│       └── generate-charts.py   # Radar, bar, heatmap, delta charts
+│
+├── future/                      # Design docs for future work
+│   ├── synthetic-data.md        # Synthetic training data from wiki
+│   ├── product-vision.md        # Web UI, API, self-improving system
+│   └── finetuning-plan.md       # Fine-tune a model on the wiki
+│
+├── .obsidian/                   # Obsidian vault config (IDE frontend)
+│   ├── app.json                 # Editor settings
+│   ├── workspace.json           # Default layout
+│   ├── graph.json               # Graph view with color groups
+│   └── snippets/wiki-style.css  # Wiki styling
+│
+└── VAULT.md                     # How to open in Obsidian
 ```
 
 ---
@@ -515,15 +585,34 @@ my-agent/
 
 ---
 
-## Scripts
+## Scripts and Tools
+
+### CLI tools (Bun/Node)
 
 | Script | Purpose | Usage |
 |--------|---------|-------|
 | `validate-agent.ts` | Lint agent projects against AGENT_SPEC | `bun scripts/validate-agent.ts /path/to/agent` |
-| `compile-wiki.md` | LLM runbook: compile raw sources into wiki articles | `Read scripts/compile-wiki.md` |
-| `health-check.md` | LLM runbook: audit wiki for quality, staleness, orphans | `Read scripts/health-check.md` |
-| `update-sources.md` | LLM runbook: discover and integrate new repos/docs | `Read scripts/update-sources.md` |
+| `search-wiki.ts` | Full-text search across wiki articles | `bun scripts/search-wiki.ts "circuit breaker"` |
+| `wiki-stats.ts` | Article count, word count, orphans, categories | `bun scripts/wiki-stats.ts wiki/` |
+| `check-links.ts` | Validate internal markdown links | `bun scripts/check-links.ts wiki/ course/` |
+
+### LLM runbooks
+
+| Script | Purpose | Usage |
+|--------|---------|-------|
+| `compile-wiki.md` | Compile raw sources into wiki articles | `Read scripts/compile-wiki.md` |
+| `health-check.md` | Audit wiki quality (10 checks: orphans, stale links, inconsistencies, gaps, connections) | `Read scripts/health-check.md` |
+| `research-qa.md` | Wiki-grounded Q&A engine with citations | `Read scripts/research-qa.md` |
+| `build-index.md` | Regenerate INDEX.md, BACKLINKS.md, category tags | `Read scripts/build-index.md` |
+| `clip-article.md` | Ingest web articles into raw/docs/ | `Read scripts/clip-article.md` |
+| `update-sources.md` | Monthly discovery and integration of new repos/docs | `Read scripts/update-sources.md` |
 | `discovery-keywords.txt` | 24 search phrases for finding new agent repos | Used by update-sources.md |
+
+### Chart generation (Python)
+
+| Script | Purpose | Usage |
+|--------|---------|-------|
+| `outputs/charts/generate-charts.py` | Generate radar, bar, heatmap, delta charts from grading data | `python outputs/charts/generate-charts.py` |
 
 ### Monthly Auto-Updates
 
@@ -549,20 +638,48 @@ Read scripts/update-sources.md and run the monthly update.
 
 ## Architecture: The Karpathy Pattern
 
-This project implements the LLM Knowledge Base pattern described by [Andrej Karpathy](https://x.com/karpathy/status/1909366683415642209):
+This project implements the full [LLM Knowledge Base architecture](https://x.com/karpathy/status/1909366683415642209), covering every stage from data ingest to outputs:
 
-1. **Raw data ingest** -- Curate repos, save reference doc URLs, capture specs into `raw/`
-2. **LLM compilation** -- An LLM reads raw sources and writes structured wiki articles into `wiki/`
-3. **Auto-maintained indexes** -- INDEX.md and GLOSSARY.md are regenerated after every compilation
-4. **Agent creation tools** -- Three wiki-backed workflows:
-   - `authoring/SKILL.md` -- review and improve existing agents
-   - `agent-maker/SKILL.md` -- interactive 8-phase creation
-   - `prompt-decomposer/SKILL.md` -- extract agent components from prompts/codebases
-5. **Quality standard** -- AGENT_SPEC.md with 8 scoring dimensions and automated validator
-6. **Feedback loops** -- Health checks, monthly updates, and query logs feed back into the wiki
-7. **Incremental enhancement** -- Each compilation pass improves existing articles and adds new ones
+### Data Ingest
 
-The wiki is the LLM's compiled knowledge -- not a static document, but a living system that gets smarter with every update cycle.
+Sources flow into `raw/` through four channels:
+- **Articles, papers, repos** -- curated in `raw/docs/SOURCES.md` and `raw/repos/SOURCES.md`
+- **Datasets** -- structured JSON/CSV in `raw/datasets/` (autoresearch scores, wave improvements)
+- **Images** -- architecture diagrams in `raw/images/`
+- **Web clipper** -- `scripts/clip-article.md` LLM runbook for ingesting new articles
+
+### LLM Engine
+
+Four processing stages transform raw sources into compiled knowledge:
+- **Compile** (`compile-wiki.md`) -- raw sources → wiki articles
+- **Q&A** (`research-qa.md`) -- wiki-grounded research answers, filed to `wiki/queries/`
+- **Linting** (`health-check.md`) -- 10 checks: orphans, stale links, inconsistencies, missing data, suggested articles, connections
+- **Indexing** (`build-index.md`) -- summaries, backlinks, category tagging, INDEX.md regeneration
+
+### Extra Tools (CLI)
+
+- `search-wiki.ts` -- full-text search across wiki articles
+- `wiki-stats.ts` -- article count, word count, orphan detection, category breakdown
+- `check-links.ts` -- validate all internal markdown links
+- `validate-agent.ts` -- lint agent projects against AGENT_SPEC
+
+### Knowledge Store
+
+85+ articles with YAML frontmatter (category, tags), auto-generated `BACKLINKS.md`, and cross-linked `INDEX.md` and `GLOSSARY.md`.
+
+### Outputs
+
+- **Markdown** -- wiki articles, the primary output
+- **Slides** -- Marp-format decks in `outputs/slides/` (quality overview, course summary, autoresearch results)
+- **Charts** -- Matplotlib visualizations in `outputs/charts/` (radar, heatmap, bar, delta); charts feed back into the wiki
+
+### IDE Frontend
+
+Obsidian vault config in `.obsidian/` with graph view (color-coded by category), file explorer, and search. See [VAULT.md](VAULT.md) for setup.
+
+### Future Explorations
+
+Design docs in `future/` for synthetic data generation, wiki fine-tuning, and a product vision beyond scripts.
 
 ---
 

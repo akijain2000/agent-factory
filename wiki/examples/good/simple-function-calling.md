@@ -1,3 +1,8 @@
+---
+category: example-good
+tags: [function-calling, minimal-agent, observe-decide-act]
+---
+
 # Minimal Function-Calling Agent: Twenty Lines, Full Loop
 
 ## Summary

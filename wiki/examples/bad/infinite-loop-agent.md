@@ -1,3 +1,8 @@
+---
+category: example-bad
+tags: [infinite-loop, anti-pattern, retries]
+---
+
 # Infinite Loop Agent: Retry Until the Heat Death of the Wallet
 
 ## Summary

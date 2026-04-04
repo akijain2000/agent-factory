@@ -1,0 +1,14 @@
+{
+  "vimMode": false,
+  "readableLineLength": true,
+  "showFrontmatter": false,
+  "foldHeading": true,
+  "foldIndent": true,
+  "defaultViewMode": "preview",
+  "strictLineBreaks": true,
+  "showLineNumber": true,
+  "spellcheck": true,
+  "promptDelete": true,
+  "alwaysUpdateLinks": true,
+  "newLinkFormat": "relative"
+}

@@ -1,3 +1,8 @@
+---
+category: example-good
+tags: [langgraph, react, state-machine]
+---
+
 # LangGraph ReAct Agent: State Machine and Tool Loop
 
 ## Summary

@@ -1,3 +1,8 @@
+---
+category: example-bad
+tags: [god-agent, anti-pattern, over-scoped]
+---
+
 # God Agent: One Prompt to Rule Them All
 
 ## Summary
